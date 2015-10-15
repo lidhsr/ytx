@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- view_pull_refresh(start) -->
+    <item name="gridview" type="id"/>
+    <item name="webview" type="id"/>
+    <item name="scrollview" type="id"/>
+    <item name="viewpager" type="id"/>
+    <!-- view_pull_refresh(end) -->
+
+    <!-- SlidingMenu(start) -->
+    <item name="selected_view" type="id"/>
+    <!-- SlidingMenu(end) -->
+
+</resources>
