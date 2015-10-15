@@ -5,3 +5,5 @@
 
 引用了KJLibrary
 GitHub项目地址：https://github.com/kymjs/KJFrameForAndroid
+
+不定期修改或增加
