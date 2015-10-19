@@ -21,7 +21,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.ytx.activity.TitleBarActivity;
-import com.ytx.app.AppContext;
+import com.ytx.app.BaseApplication;
 
 /**
  * 
@@ -43,18 +43,19 @@ public abstract class TitleBarFragment extends KJFragment {
         public Drawable backImageDrawable;
         public int menuImageId;
         public Drawable menuImageDrawable;
+        public CharSequence right_txt;
     }
 
     private final ActionBarRes actionBarRes = new ActionBarRes();
     protected TitleBarActivity outsideAty;
-    protected AppContext app;
+    protected BaseApplication app;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (getActivity() instanceof TitleBarActivity) {
             outsideAty = (TitleBarActivity) getActivity();
         }
-        app = (AppContext) getActivity().getApplication();
+        app = (BaseApplication) getActivity().getApplication();
         super.onCreate(savedInstanceState);
     }
 
@@ -63,6 +64,7 @@ public abstract class TitleBarFragment extends KJFragment {
         super.onResume();
         setActionBarRes(actionBarRes);
         setTitle(actionBarRes.title);
+        setRightText(actionBarRes.right_txt);
         if (actionBarRes.backImageId == 0) {
             setBackImage(actionBarRes.backImageDrawable);
         } else {
@@ -101,6 +103,17 @@ public abstract class TitleBarFragment extends KJFragment {
     protected void setTitle(CharSequence text) {
         if (outsideAty != null) {
             outsideAty.mTvTitle.setText(text);
+        }
+    }
+
+    /**
+     * 设置右边文字
+     *
+     * @param text
+     */
+    protected void setRightText(CharSequence text) {
+        if (outsideAty != null) {
+            outsideAty.mRightText.setText(text);
         }
     }
 

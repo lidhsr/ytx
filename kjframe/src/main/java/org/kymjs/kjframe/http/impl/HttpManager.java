@@ -1,5 +1,7 @@
 package org.kymjs.kjframe.http.impl;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.kymjs.kjframe.KJHttp;
@@ -22,7 +24,7 @@ public class HttpManager {
      * @param params 请求参数
      * @param listener 请求回调
      */
-    protected void resolveVoid(String url, HttpParams params, final HttpPostListener listener) {
+    public void resolveVoid(String url, HttpParams params, final HttpPostListener listener) {
         final HttpResult<Void> result = new HttpResult<Void>();
         if(null == params) {
             params = new HttpParams();
@@ -35,6 +37,7 @@ public class HttpManager {
                         super.onSuccess(headers, t);
                         try {
                             JSONObject jsonObject = new JSONObject(new String(t));
+                            Log.e("msg", "json:" + jsonObject.toString());
                             result.setRet(jsonObject.optInt(HttpResultData.RET_CODE));
                             if (jsonObject.optInt(HttpResultData.RET_CODE) == HttpResult.OK) {
                                 result.setRet(HttpResult.OK);
@@ -56,6 +59,7 @@ public class HttpManager {
                         super.onFailure(errorNo, strMsg);
                         result.setCode(errorNo);
                         result.setMsg(strMsg);
+                        Log.e("msg", strMsg + ", onFailure..." + errorNo);
                         if(null != listener) {
                             listener.onResult(result);
                         }
@@ -83,6 +87,7 @@ public class HttpManager {
                         super.onSuccess(headers, t);
                         try {
                             JSONObject jsonObject = new JSONObject(new String(t));
+                            Log.e("msg", "json:" + jsonObject.toString());
                             result.setRet(jsonObject.optInt(HttpResultData.RET_CODE));
                             if (jsonObject.optInt(HttpResultData.RET_CODE) == HttpResult.OK) {
                                 result.setData(builder.create(jsonObject.optJSONObject(HttpResultData.RET_DATA)));
@@ -130,6 +135,7 @@ public class HttpManager {
                         super.onSuccess(headers, t);
                         try {
                             JSONObject jsonObject = new JSONObject(new String(t));
+                            Log.e("msg", "json:" + jsonObject.toString());
                             result.setRet(jsonObject.optInt(HttpResultData.RET_CODE));
                             if (jsonObject.optInt(HttpResultData.RET_CODE) == HttpResult.OK) {
                                 JSONObject retData = jsonObject.optJSONObject(HttpResultData.RET_DATA);

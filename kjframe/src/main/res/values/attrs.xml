@@ -117,4 +117,8 @@
     </declare-styleable>
     <!-- SlidingMenu(end) -->
 
+    !-- 滑动删除列表 -->
+    <declare-styleable name="swipelistviewstyle">
+        <attr name="right_width" format="dimension"></attr>
+    </declare-styleable>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.kymjs.kjframe.pulltorefresh.PullToRefreshListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@null"
+    android:fadingEdge="none"
+    android:scrollingCache="false"
+    android:cacheColorHint="@color/transparent"
+    android:orientation="vertical">
+
+</org.kymjs.kjframe.pulltorefresh.PullToRefreshListView>

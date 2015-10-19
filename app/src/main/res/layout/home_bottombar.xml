@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/title_bg" />
+
+    <RadioGroup
+        android:id="@+id/bottombar_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingTop="3dp">
+
+        <RadioButton
+            android:id="@+id/bottombar_content1"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/bottom_01_bg"
+            android:text="@string/bottombar_content1"
+            android:textColor="@drawable/bottom_text_color_bg" />
+
+        <RadioButton
+            android:id="@+id/bottombar_content2"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bottom_02_bg"
+            android:text="@string/bottombar_content2"
+            android:textColor="@drawable/bottom_text_color_bg" />
+
+        <RadioButton
+            android:id="@+id/bottombar_content3"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bottom_03_bg"
+            android:text="@string/bottombar_content3"
+            android:textColor="@drawable/bottom_text_color_bg" />
+
+        <RadioButton
+            android:id="@+id/bottombar_content4"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bottom_04_bg"
+            android:text="@string/bottombar_content4"
+            android:textColor="@drawable/bottom_text_color_bg" />
+
+        <RadioButton
+            android:id="@+id/bottombar_content5"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bottom_05_bg"
+            android:text="@string/bottombar_content5"
+            android:textColor="@drawable/bottom_text_color_bg" />
+
+    </RadioGroup>
+</LinearLayout>

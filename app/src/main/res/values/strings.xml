@@ -5,4 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="bottombar_content1">首页</string>
+    <string name="bottombar_content2">分类</string>
+    <string name="bottombar_content3">购物车</string>
+    <string name="bottombar_content4">搜索</string>
+    <string name="bottombar_content5">我的</string>
 </resources>

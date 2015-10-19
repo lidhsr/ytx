@@ -20,12 +20,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ytx.R;
 
@@ -41,9 +39,9 @@ public abstract class TitleBarActivity extends KJActivity {
 
     public ImageView mImgBack;
     public TextView mTvTitle;
-    public TextView mTvDoubleClickTip;
     public ImageView mImgMenu;
     public RelativeLayout mRlTitleBar;
+    public TextView mRightText;
 
     protected final Handler mMainLoopHandler = new Handler(
             Looper.getMainLooper());
@@ -58,13 +56,13 @@ public abstract class TitleBarActivity extends KJActivity {
     @Override
     protected void onStart() {
         try {
-//            mRlTitleBar = (RelativeLayout) findViewById(R.id.titlebar);
-//            mImgBack = (ImageView) findViewById(R.id.titlebar_img_back);
-//            mTvTitle = (TextView) findViewById(R.id.titlebar_text_title);
-//            mTvDoubleClickTip = (TextView) findViewById(R.id.titlebar_text_exittip);
-//            mImgMenu = (ImageView) findViewById(R.id.titlebar_img_menu);
-//            mImgBack.setOnClickListener(this);
-//            mImgMenu.setOnClickListener(this);
+            mRlTitleBar = (RelativeLayout) findViewById(R.id.titlebar);
+            mImgBack = (ImageView) findViewById(R.id.titlebar_img_back);
+            mTvTitle = (TextView) findViewById(R.id.titlebar_text_title);
+            mImgMenu = (ImageView) findViewById(R.id.titlebar_img_menu);
+            mRightText = (TextView) findViewById(R.id.titlebar_right_txt);
+            mImgBack.setOnClickListener(this);
+            mImgMenu.setOnClickListener(this);
         } catch (NullPointerException e) {
             throw new NullPointerException(
                     "TitleBar Notfound from Activity layout");
@@ -76,14 +74,17 @@ public abstract class TitleBarActivity extends KJActivity {
     public void widgetClick(View v) {
         super.widgetClick(v);
         switch (v.getId()) {
-//            case R.id.titlebar_img_back:
-//                onBackClick();
-//                break;
-//            case R.id.titlebar_img_menu:
-//                onMenuClick();
-//                break;
-//            default:
-//                break;
+            case R.id.titlebar_img_back:
+                onBackClick();
+                break;
+            case R.id.titlebar_img_menu:
+                onMenuClick();
+                break;
+            case R.id.titlebar_right_txt:
+                onRightTextclick();
+                break;
+            default:
+                break;
         }
     }
 
@@ -91,6 +92,10 @@ public abstract class TitleBarActivity extends KJActivity {
     }
 
     protected void onMenuClick() {
+    }
+
+    protected void onRightTextclick() {
+
     }
 
     public void onCurtainPull() {
