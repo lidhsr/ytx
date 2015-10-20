@@ -43,8 +43,10 @@ public class SearchFragment extends TitleBarFragment implements PullToRefreshBas
     private void setTitleBar(ActionBarRes actionBarRes) {
         if(null != actionBarRes) {
             actionBarRes.title = getString(R.string.bottombar_content4);
+            actionBarRes.right_txt = "";
         } else {
             setTitle(getString(R.string.bottombar_content4));
+            setRightText("");
         }
 
     }

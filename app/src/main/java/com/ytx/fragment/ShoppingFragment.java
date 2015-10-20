@@ -1,13 +1,17 @@
 package com.ytx.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
+import com.ytx.widget.ShoppingEditPopupWindow;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -21,6 +25,10 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     private HomeActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
+    @BindView(id = R.id.shopping_root)
+    private RelativeLayout shopping_root;
+    private boolean isEdit = false;
+    private ShoppingEditPopupWindow shoppingEditPopupWindow;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -40,6 +48,12 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
         setTitleBar(null);
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        shoppingEditPopupWindow = new ShoppingEditPopupWindow(activity, null);
+    }
+
     private void setTitleBar(ActionBarRes actionBarRes) {
         if(null != actionBarRes) {
             actionBarRes.title = getString(R.string.bottombar_content3);
@@ -55,6 +69,16 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
         super.initWidget(parentView);
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         pullToRefreshListView.setOnRefreshListener(this);
+
+    }
+
+    @Override
+    public void onRightTxtClick() {
+        super.onRightTxtClick();
+        isEdit = !isEdit;
+        setRightText(isEdit ? "保存" : "编辑");
+        shoppingEditPopupWindow.showAtLocation(shopping_root, Gravity.CENTER, 0, 0);
+
     }
 
     @Override

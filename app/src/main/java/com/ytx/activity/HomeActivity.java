@@ -1,5 +1,6 @@
 package com.ytx.activity;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
@@ -31,8 +32,6 @@ public class HomeActivity extends TitleBarActivity {
     private RadioButton mRbtnContent4;
     @BindView(id = R.id.bottombar_content5, click = true)
     private RadioButton mRbtnContent5;
-
-
 
     private TitleBarFragment contentFragment1;
     private TitleBarFragment contentFragment2;
@@ -84,6 +83,24 @@ public class HomeActivity extends TitleBarActivity {
                 changeFragment(contentFragment5);
                 break;
         }
+    }
+
+    @Override
+    protected void onBackClick() {
+        super.onBackClick();
+        currentFragment.onBackClick();
+    }
+
+    @Override
+    protected void onMenuClick() {
+        super.onMenuClick();
+        currentFragment.onMenuClick();
+    }
+
+    @Override
+    protected void onRightTextClick() {
+        super.onRightTextClick();
+        currentFragment.onRightTxtClick();
     }
 
     public void changeFragment(TitleBarFragment targetFragment) {
