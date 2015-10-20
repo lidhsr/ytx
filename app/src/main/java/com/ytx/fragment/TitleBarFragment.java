@@ -96,6 +96,11 @@ public abstract class TitleBarFragment extends KJFragment {
     public void onMenuClick() {}
 
     /**
+     * 当ActivityBar上的右边文字被按下时
+     */
+    public void onRightTxtClick() {}
+
+    /**
      * 设置标题
      * 
      * @param text

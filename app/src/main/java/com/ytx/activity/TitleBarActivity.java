@@ -63,6 +63,7 @@ public abstract class TitleBarActivity extends KJActivity {
             mRightText = (TextView) findViewById(R.id.titlebar_right_txt);
             mImgBack.setOnClickListener(this);
             mImgMenu.setOnClickListener(this);
+            mRightText.setOnClickListener(this);
         } catch (NullPointerException e) {
             throw new NullPointerException(
                     "TitleBar Notfound from Activity layout");
@@ -81,7 +82,7 @@ public abstract class TitleBarActivity extends KJActivity {
                 onMenuClick();
                 break;
             case R.id.titlebar_right_txt:
-                onRightTextclick();
+                onRightTextClick();
                 break;
             default:
                 break;
@@ -94,7 +95,7 @@ public abstract class TitleBarActivity extends KJActivity {
     protected void onMenuClick() {
     }
 
-    protected void onRightTextclick() {
+    protected void onRightTextClick() {
 
     }
 
