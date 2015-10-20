@@ -5,6 +5,6 @@ package com.ytx.app;
  */
 public class UrlConstants {
 
-    public final static String BASE_SERVER = "";
+    public final static String BASE_SERVER = "1";
 
 }
