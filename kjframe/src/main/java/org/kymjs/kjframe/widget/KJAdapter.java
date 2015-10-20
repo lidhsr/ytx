@@ -37,7 +37,7 @@ public abstract class KJAdapter<T> extends BaseAdapter implements
         AbsListView.OnScrollListener {
 
     protected Collection<T> mDatas;
-    protected final int mItemLayoutId;
+    protected int mItemLayoutId;
     protected AbsListView mList;
     protected boolean isScrolling;
     protected Context mCxt;
