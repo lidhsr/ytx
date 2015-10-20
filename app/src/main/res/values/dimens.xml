@@ -12,7 +12,7 @@
     <dimen name="titlebar_height">45dp</dimen>
     <dimen name="bottombar_height">60dp</dimen>
 
-
+    <dimen name="dimen_0.5">0.5dp</dimen>
     <dimen name="dimen_01">1dp</dimen>
     <dimen name="dimen_02">2dp</dimen>
     <dimen name="dimen_03">3dp</dimen>
