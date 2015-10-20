@@ -42,4 +42,9 @@
         <item name="android:gravity">bottom|center_horizontal</item>
     </style>
 
+    <style name="AnimationPreview">
+        <item name="android:windowEnterAnimation">@anim/popup_selector_in</item>
+        <item name="android:windowExitAnimation">@anim/popup_selector_out</item>
+    </style>
+
 </resources>
