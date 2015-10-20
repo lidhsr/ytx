@@ -119,7 +119,7 @@ public class HttpManager {
      * 解析返回实体列表的请求.
      * @param url 请求地址
      * @param params 请求参数
-     * @param builder 实体构造器
+     * @param builder 实体构造器W
      * @param listener 请求回调
      */
     protected <T extends Entity> void resolveListEntity(String url, HttpParams params, final Entity.Builder<T> builder, final HttpPostListener listener) {

@@ -61,4 +61,6 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 
     }
+
+
 }
