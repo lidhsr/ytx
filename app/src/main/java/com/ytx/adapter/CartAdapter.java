@@ -8,7 +8,9 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.ytx.R;
+import com.ytx.activity.HomeActivity;
 import com.ytx.data.Shop;
+import com.ytx.fragment.SortFragment;
 import com.ytx.widget.SwipeListView;
 
 import org.kymjs.kjframe.widget.AdapterHolder;
@@ -21,16 +23,18 @@ import java.util.Collection;
  */
 public class CartAdapter extends KJAdapter<Shop> {
     private Context context;
-    public CartAdapter(AbsListView view, Collection mDatas, int itemLayoutId) {
+    private SortFragment.AfterSelectedListener listener;
+    public CartAdapter(AbsListView view, Collection mDatas, int itemLayoutId,SortFragment.AfterSelectedListener listener) {
         super(view, mDatas, itemLayoutId);
         context = view.getContext();
+        this.listener = listener;
     }
 
     @Override
     public void convert(final AdapterHolder helper, final Shop item, boolean isScrolling) {
         helper.setText(R.id.tv_shopname,item.name);
         SwipeListView mListView = (SwipeListView) helper.getConvertView().findViewById(R.id.listview);
-        SwipeAdapter adapter = new SwipeAdapter(context, mListView.getRightViewWidth(),
+        SwipeAdapter adapter = new SwipeAdapter(context, HomeActivity.screenW / 4,
                 new SwipeAdapter.IOnItemRightClickListener() {
                     @Override
                     public void onRightClick(View v, int position) {
@@ -43,7 +47,7 @@ public class CartAdapter extends KJAdapter<Shop> {
                 Toast.makeText(context, item.name + position + "left",
                         Toast.LENGTH_SHORT).show();
             }
-        }, item.pList);
+        }, item.pList,listener);
         mListView.setAdapter(adapter);
     }
 

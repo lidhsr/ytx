@@ -11,6 +11,10 @@ public class Product extends Entity implements Entity.Builder<Product> {
     private static Product test;
 
     public String pName;
+    public boolean isChecked = false;
+    public boolean editable  = false;
+    public int productNum = 1;
+    public double price = 0;
 
     public static Builder<Product> getInfo() {
         if(null == test) {

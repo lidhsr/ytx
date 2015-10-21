@@ -32,6 +32,8 @@
             android:background="@color/colorAccent" />
 
         <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/iv_product"
@@ -101,6 +103,89 @@
                     android:textSize="@dimen/dimen_12_sp"/>
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/ll_left_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/iv_product"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_05"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_minus"
+                        android:layout_width="@dimen/dimen_28"
+                        android:layout_height="@dimen/dimen_28"
+                        android:background="@drawable/cart_btn_minus"/>
+                    <TextView
+                        android:id="@+id/tv_num_edit"
+                        android:layout_width="@dimen/dimen_75"
+                        android:layout_height="@dimen/dimen_28"
+                        android:background="@mipmap/cart_edit_bg"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/text_333"
+                        android:textSize="@dimen/dimen_14_sp"/>
+                    <TextView
+                        android:id="@+id/tv_plus"
+                        android:layout_width="@dimen/dimen_28"
+                        android:layout_height="@dimen/dimen_28"
+                        android:background="@drawable/cart_btn_plus"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_product_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_product_intro"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="@dimen/dimen_28"
+                        android:background="@mipmap/cart_edit_bg"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dimen_03"
+                        android:text="颜色:白色 尺码:M"
+                        android:textColor="@color/text_999"
+                        android:textSize="@dimen/dimen_10_sp"/>
+                    <TextView
+                        android:layout_width="@dimen/dimen_28"
+                        android:layout_height="@dimen/dimen_28"
+                        android:background="@drawable/cart_btn_down"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_price_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@android:color/holo_red_light"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:gravity="right"
+                    android:text="¥1,360"
+                    android:textSize="@dimen/dimen_13_sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
 
     </RelativeLayout>
 

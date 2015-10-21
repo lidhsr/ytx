@@ -19,6 +19,7 @@ import org.kymjs.kjframe.ui.KJFragment;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.ytx.activity.TitleBarActivity;
 import com.ytx.app.BaseApplication;
@@ -120,6 +121,10 @@ public abstract class TitleBarFragment extends KJFragment {
         if (outsideAty != null) {
             outsideAty.mRightText.setText(text);
         }
+    }
+
+    protected TextView getRightText(){
+        return outsideAty.mRightText;
     }
 
     /**
