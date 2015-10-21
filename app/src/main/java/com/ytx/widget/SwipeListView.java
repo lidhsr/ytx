@@ -10,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
 
+import com.ytx.activity.HomeActivity;
+
 public class SwipeListView extends ListView {
     private Boolean mIsHorizontal;
 
@@ -21,7 +23,7 @@ public class SwipeListView extends ListView {
 
     private float mFirstY;
 
-    private int mRightViewWidth = 300;
+    private int mRightViewWidth = HomeActivity.screenW / 4;
 
     // private boolean mIsInAnimation = false;
     private final int mDuration = 100;

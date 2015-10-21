@@ -34,7 +34,7 @@ public class CartAdapter extends KJAdapter<Shop> {
     public void convert(final AdapterHolder helper, final Shop item, boolean isScrolling) {
         helper.setText(R.id.tv_shopname,item.name);
         SwipeListView mListView = (SwipeListView) helper.getConvertView().findViewById(R.id.listview);
-        SwipeAdapter adapter = new SwipeAdapter(context, HomeActivity.screenW / 4,
+        SwipeAdapter adapter = new SwipeAdapter(context, mListView.getRightViewWidth(),
                 new SwipeAdapter.IOnItemRightClickListener() {
                     @Override
                     public void onRightClick(View v, int position) {
