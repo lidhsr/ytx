@@ -21,7 +21,6 @@ import com.ytx.fragment.SortFragment;
 import org.kymjs.kjframe.utils.StringUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class SwipeAdapter extends BaseAdapter {
@@ -131,6 +130,9 @@ public class SwipeAdapter extends BaseAdapter {
                         listener.todo();
                         break;
                     case R.id.ll_product_info:
+                        if(null != popupClickListener) {
+                            popupClickListener.onClick();
+                        }
                         break;
                     case R.id.iv_product:
                         if (mListenerLeft != null) {
@@ -182,22 +184,24 @@ public class SwipeAdapter extends BaseAdapter {
 
     private class ViewHolder {
         View item_left;
-
         View item_right;
-
         TextView item_left_txt;
-
         TextView item_right_txt;
-
         ImageView iv_product;
-
         CheckBox cbx_item;
-
         LinearLayout ll_left_edit,ll_left,ll_product_info;
-
         TextView tv_price,tv_num,tv_color,tv_size;
-
         TextView tv_minus,tv_num_edit,tv_plus,tv_product_intro,tv_price_edit;
+    }
+
+    private PopupClickListener popupClickListener;
+
+    public void setPopupClickListener(PopupClickListener listener) {
+        this.popupClickListener = listener;
+    }
+
+    public interface PopupClickListener {
+        void onClick();
     }
 }
 

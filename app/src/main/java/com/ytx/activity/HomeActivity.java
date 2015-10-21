@@ -45,7 +45,7 @@ public class HomeActivity extends TitleBarActivity {
     private TitleBarFragment currentFragment;
 
     private boolean isOnKeyBacking;
-    public int height;
+    public static int height;
 
     public static int screenW;
     public static int screenH;

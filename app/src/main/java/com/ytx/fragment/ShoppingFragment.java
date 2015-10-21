@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
 import com.ytx.adapter.CartAdapter;
+import com.ytx.adapter.SwipeAdapter;
 import com.ytx.data.Product;
 import com.ytx.data.Shop;
 import com.ytx.widget.ShoppingEditPopupWindow;
@@ -30,7 +31,8 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class ShoppingFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, ShoppingEditPopupWindow.ButtonClick {
+public class ShoppingFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>,
+        ShoppingEditPopupWindow.PopupClick, SwipeAdapter.PopupClickListener {
 
     private HomeActivity activity;
     @BindView(id = R.id.list)
@@ -126,7 +128,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 break;
             case R.id.cbx_all:
                 for (Shop shop : mData) {
-                    for (Product p : shop.pList){
+                    for (Product p : shop.products){
                         p.isChecked = ((CheckBox) v).isChecked();
                     }
                 }
@@ -151,17 +153,18 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 list.add(product);
             }
             tv_total_price.setText("¥ 0.0");
-            shop.pList.addAll(list);
+            shop.products.addAll(list);
             mData.add(shop);
         }
         ListView listView = pullToRefreshListView.getRefreshableView();
         cartAdapter = new CartAdapter(listView, mData, R.layout.item_cart_main, new SortFragment.AfterSelectedListener() {
+
             @Override
             public void todo() {
                 int count = 0,total = 0;
                 double totalPrice = 0;
                 for (Shop shop : mData) {
-                    for (Product p : shop.pList){
+                    for (Product p : shop.products){
                         total++;
                         if (p.isChecked){
                             count++;
@@ -182,6 +185,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
         pullToRefreshListView.setOnRefreshListener(this);
         listView.setAdapter(cartAdapter);
         pullToRefreshListView.setEmptyView(empty_layout);
+        cartAdapter.setPopupClickListener(this);
     }
 
     @Override
@@ -200,7 +204,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
             tv_operate.setText("结算");
         }
         for (Shop shop : mData) {
-            for (Product p : shop.pList){
+            for (Product p : shop.products){
                 p.editable = isEdit;
             }
         }
@@ -212,9 +216,13 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
 
     }
 
-
     @Override
     public void clikResult(int sizeValue, int colorValue) {
         Log.e("msg", "size:" + sizeValue + ", color:" + colorValue);
+    }
+
+    @Override
+    public void onClick() {
+        handler.sendEmptyMessage(0);
     }
 }

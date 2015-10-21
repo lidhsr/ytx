@@ -1,10 +1,8 @@
 package com.ytx.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.ytx.R;
@@ -24,7 +22,10 @@ import java.util.Collection;
 public class CartAdapter extends KJAdapter<Shop> {
     private Context context;
     private SortFragment.AfterSelectedListener listener;
-    public CartAdapter(AbsListView view, Collection mDatas, int itemLayoutId,SortFragment.AfterSelectedListener listener) {
+    private SwipeAdapter adapter;
+    private SwipeAdapter.PopupClickListener popupClickListener;
+
+    public CartAdapter(AbsListView view, Collection mDatas, int itemLayoutId, SortFragment.AfterSelectedListener listener) {
         super(view, mDatas, itemLayoutId);
         context = view.getContext();
         this.listener = listener;
@@ -32,9 +33,9 @@ public class CartAdapter extends KJAdapter<Shop> {
 
     @Override
     public void convert(final AdapterHolder helper, final Shop item, boolean isScrolling) {
-        helper.setText(R.id.tv_shopname,item.name);
+        helper.setText(R.id.tv_shopname, item.name);
         SwipeListView mListView = (SwipeListView) helper.getConvertView().findViewById(R.id.listview);
-        SwipeAdapter adapter = new SwipeAdapter(context, mListView.getRightViewWidth(),
+        adapter = new SwipeAdapter(context, mListView.getRightViewWidth(),
                 new SwipeAdapter.IOnItemRightClickListener() {
                     @Override
                     public void onRightClick(View v, int position) {
@@ -47,8 +48,15 @@ public class CartAdapter extends KJAdapter<Shop> {
                 Toast.makeText(context, item.name + position + "left",
                         Toast.LENGTH_SHORT).show();
             }
-        }, item.pList,listener);
+        }, item.products, listener);
         mListView.setAdapter(adapter);
+        if(null != popupClickListener) {
+            adapter.setPopupClickListener(popupClickListener);
+        }
+    }
+
+    public void setPopupClickListener(SwipeAdapter.PopupClickListener listener) {
+        this.popupClickListener = listener;
     }
 
     @Override

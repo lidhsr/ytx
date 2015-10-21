@@ -87,7 +87,7 @@ public class SortFragment extends TitleBarFragment implements OnRefreshListener<
             tv_operate.setText("结算");
         }
         for (Shop shop : mData) {
-            for (Product p : shop.pList){
+            for (Product p : shop.products){
                 p.editable = getRightText().getText().toString().equals("Save");
             }
         }
@@ -108,7 +108,7 @@ public class SortFragment extends TitleBarFragment implements OnRefreshListener<
                 list.add(product);
             }
             tv_total_price.setText("¥ 0.0");
-            shop.pList.addAll(list);
+            shop.products.addAll(list);
             mData.add(shop);
         }
         ListView listView = pullToRefreshListView.getRefreshableView();
@@ -118,7 +118,7 @@ public class SortFragment extends TitleBarFragment implements OnRefreshListener<
                 int count = 0,total = 0;
                 double totalPrice = 0;
                 for (Shop shop : mData) {
-                    for (Product p : shop.pList){
+                    for (Product p : shop.products){
                         total++;
                         if (p.isChecked){
                             count++;
@@ -146,7 +146,7 @@ public class SortFragment extends TitleBarFragment implements OnRefreshListener<
         switch (v.getId()){
             case R.id.cbx_all:
                 for (Shop shop : mData) {
-                    for (Product p : shop.pList){
+                    for (Product p : shop.products){
                         p.isChecked = ((CheckBox) v).isChecked();
                     }
                 }

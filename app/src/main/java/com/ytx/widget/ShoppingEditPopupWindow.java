@@ -42,7 +42,7 @@ public class ShoppingEditPopupWindow extends PopupWindow {
     private int sizeValue;
     private int colorValue;
 
-    public ShoppingEditPopupWindow(final Activity context , final ButtonClick listener, ArrayList<String> sizeList, ArrayList<String> colorList) {
+    public ShoppingEditPopupWindow(final Activity context , final PopupClick listener, ArrayList<String> sizeList, ArrayList<String> colorList) {
         this.activity = context;
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -221,7 +221,7 @@ public class ShoppingEditPopupWindow extends PopupWindow {
         }
     }
 
-    public interface ButtonClick {
+    public interface PopupClick {
         void clikResult(int sizeValue, int colorValue);
     }
 }
