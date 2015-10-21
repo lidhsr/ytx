@@ -7,17 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
+import com.ytx.adapter.CartAdapter;
+import com.ytx.data.Product;
+import com.ytx.data.Shop;
 import com.ytx.widget.ShoppingEditPopupWindow;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.utils.StringUtils;
 
 import java.util.ArrayList;
 
@@ -35,6 +41,19 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     private LinearLayout empty_layout;
     @BindView(id = R.id.btn_go, click = true)
     private Button btn_go;
+
+    private ArrayList<Shop> mData = new ArrayList<Shop>();
+    private CartAdapter cartAdapter;
+    @BindView(id = R.id.tv_operate,click = true)
+    private TextView tv_operate;
+    @BindView(id = R.id.tv_move,click = true)
+    private TextView tv_move;
+    @BindView(id = R.id.cbx_all,click = true)
+    private CheckBox cbx_all;
+    @BindView(id = R.id.ll_price)
+    private LinearLayout ll_price;
+    @BindView(id = R.id.tv_total_price)
+    private TextView tv_total_price;
 
     private boolean isEdit = false;
     private ShoppingEditPopupWindow shoppingEditPopupWindow;
@@ -94,7 +113,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
             actionBarRes.right_txt = "编辑";
         } else {
             setTitle(getString(R.string.bottombar_content3));
-            setRightText("编辑");
+            setRightText(isEdit ? "保存" : "编辑");
         }
     }
 
@@ -105,6 +124,14 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
             case R.id.btn_go:
                 activity.changeFragment(activity.contentFragment1);
                 break;
+            case R.id.cbx_all:
+                for (Shop shop : mData) {
+                    for (Product p : shop.pList){
+                        p.isChecked = ((CheckBox) v).isChecked();
+                    }
+                }
+                cartAdapter.notifyDataSetChanged();
+                break;
         }
     }
 
@@ -112,8 +139,48 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
         btn_go.setWidth(HomeActivity.screenW / 2);
+
+        for (int i = 0;i < 3;i++){
+            Shop shop = new Shop();
+            shop.name = "商家" + i;
+            ArrayList<Product> list = new ArrayList<Product>();
+            for (int t = 0;t < 2;t++){
+                Product product = new Product();
+                product.pName = shop.name + "的产品" + t;
+                product.price = 1;
+                list.add(product);
+            }
+            tv_total_price.setText("¥ 0.0");
+            shop.pList.addAll(list);
+            mData.add(shop);
+        }
+        ListView listView = pullToRefreshListView.getRefreshableView();
+        cartAdapter = new CartAdapter(listView, mData, R.layout.item_cart_main, new SortFragment.AfterSelectedListener() {
+            @Override
+            public void todo() {
+                int count = 0,total = 0;
+                double totalPrice = 0;
+                for (Shop shop : mData) {
+                    for (Product p : shop.pList){
+                        total++;
+                        if (p.isChecked){
+                            count++;
+                            totalPrice += p.price * p.productNum;
+                        }
+                    }
+                }
+                if (count == total){
+                    cbx_all.setChecked(true);
+                }else{
+                    cbx_all.setChecked(false);
+                }
+                tv_total_price.setText("¥ " + StringUtils.addComma("" + totalPrice));
+                cartAdapter.notifyDataSetChanged();
+            }
+        });
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         pullToRefreshListView.setOnRefreshListener(this);
+        listView.setAdapter(cartAdapter);
         pullToRefreshListView.setEmptyView(empty_layout);
     }
 
@@ -122,7 +189,22 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
         super.onRightTxtClick();
         isEdit = !isEdit;
         setRightText(isEdit ? "保存" : "编辑");
-        handler.sendEmptyMessage(0);
+
+        if (isEdit){
+            ll_price.setVisibility(View.GONE);
+            tv_move.setVisibility(View.VISIBLE);
+            tv_operate.setText("删除");
+        }else{
+            ll_price.setVisibility(View.VISIBLE);
+            tv_move.setVisibility(View.GONE);
+            tv_operate.setText("结算");
+        }
+        for (Shop shop : mData) {
+            for (Product p : shop.pList){
+                p.editable = isEdit;
+            }
+        }
+        cartAdapter.notifyDataSetChanged();
     }
 
     @Override
