@@ -25,7 +25,7 @@ public class SearchFragment extends TitleBarFragment implements PullToRefreshBas
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         activity = (HomeActivity) getActivity();
-        return View.inflate(activity, R.layout.fragment_shopping, null);
+        return View.inflate(activity, R.layout.fragment_search, null);
     }
 
     @Override

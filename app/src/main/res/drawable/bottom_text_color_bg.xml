@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<item android:state_selected="true" android:color="@color/color_FD9500" />-->
-    <!--<item android:state_pressed="true" android:color="@color/color_FD9500" />-->
-    <!--<item android:state_focused="true" android:color="@color/color_FD9500" />-->
-    <item android:state_checked="true" android:color="@color/color_yellow_light" />
-    <item android:color="@color/bottom_txt"/>
+    <item android:color="@color/color_yellow_light" android:state_selected="true" />
+    <item android:color="@color/color_yellow_light" android:state_pressed="true" />
+    <item android:color="@color/color_yellow_light" android:state_focused="true" />
+    <item android:color="@android:color/black" />
 </selector> 

@@ -7,7 +7,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
+        android:layout_height="@dimen/dimen_0.5"
         android:background="@color/stroke" />
 
     <RadioGroup
@@ -17,7 +17,7 @@
         android:layout_gravity="bottom"
         android:gravity="bottom"
         android:orientation="horizontal"
-        android:paddingTop="3dp">
+        android:paddingTop="@dimen/dimen_03">
 
         <RadioButton
             android:id="@+id/bottombar_content1"

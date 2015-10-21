@@ -1,10 +1,13 @@
 package com.ytx.fragment;
 
 import android.os.Bundle;
-import android.view.Gravity;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -16,18 +19,50 @@ import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Augustus on 15/10/18.
  */
-public class ShoppingFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView> {
+public class ShoppingFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, ShoppingEditPopupWindow.ButtonClick {
 
     private HomeActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
     @BindView(id = R.id.shopping_root)
     private RelativeLayout shopping_root;
+    @BindView(id = R.id.empty_layout)
+    private LinearLayout empty_layout;
+    @BindView(id = R.id.btn_go, click = true)
+    private Button btn_go;
+
     private boolean isEdit = false;
     private ShoppingEditPopupWindow shoppingEditPopupWindow;
+
+    android.os.Handler handler = new android.os.Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            ArrayList<String> size = new ArrayList<>();
+            size.add("X");
+            size.add("M");
+            size.add("L");
+            size.add("XL");
+            size.add("XXL");
+
+            ArrayList<String> color = new ArrayList<>();
+            color.add("白色");
+            color.add("黑色");
+            color.add("红色");
+
+            shoppingEditPopupWindow = new ShoppingEditPopupWindow(activity, ShoppingFragment.this, size, color);
+            shoppingEditPopupWindow.getName().setText("标题");
+            shoppingEditPopupWindow.getPrice().setText("¥1,800");
+            shoppingEditPopupWindow.show(shopping_root, activity.height);
+        }
+    };
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -50,7 +85,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     @Override
     protected void initData() {
         super.initData();
-        shoppingEditPopupWindow = new ShoppingEditPopupWindow(activity, null);
+
     }
 
     private void setTitleBar(ActionBarRes actionBarRes) {
@@ -64,11 +99,22 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     }
 
     @Override
+    protected void widgetClick(View v) {
+        super.widgetClick(v);
+        switch(v.getId()) {
+            case R.id.btn_go:
+
+                break;
+        }
+    }
+
+    @Override
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
+        btn_go.setWidth(HomeActivity.screenW / 2);
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         pullToRefreshListView.setOnRefreshListener(this);
-
+        pullToRefreshListView.setEmptyView(empty_layout);
     }
 
     @Override
@@ -76,8 +122,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
         super.onRightTxtClick();
         isEdit = !isEdit;
         setRightText(isEdit ? "保存" : "编辑");
-        shoppingEditPopupWindow.showAtLocation(shopping_root, Gravity.CENTER, 0, 0);
-
+        handler.sendEmptyMessage(0);
     }
 
     @Override
@@ -86,4 +131,8 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     }
 
 
+    @Override
+    public void clikResult(int sizeValue, int colorValue) {
+        Log.e("msg", "size:" + sizeValue + ", color:" + colorValue);
+    }
 }

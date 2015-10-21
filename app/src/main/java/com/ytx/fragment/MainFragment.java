@@ -25,7 +25,7 @@ public class MainFragment extends TitleBarFragment implements PullToRefreshBase.
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         activity = (HomeActivity) getActivity();
-        return View.inflate(activity, R.layout.fragment_shopping, null);
+        return View.inflate(activity, R.layout.fragment_main, null);
     }
 
     @Override

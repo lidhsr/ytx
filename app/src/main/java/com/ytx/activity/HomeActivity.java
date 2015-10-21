@@ -1,9 +1,11 @@
 package com.ytx.activity;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.ytx.R;
 import com.ytx.fragment.MainFragment;
@@ -22,6 +24,8 @@ import org.kymjs.kjframe.ui.KJActivityStack;
  */
 public class HomeActivity extends TitleBarActivity {
 
+    @BindView(id = R.id.bottombar_group)
+    private RadioGroup bottombar_group;
     @BindView(id = R.id.bottombar_content1, click = true)
     private RadioButton mRbtnContent1;
     @BindView(id = R.id.bottombar_content2, click = true)
@@ -41,10 +45,19 @@ public class HomeActivity extends TitleBarActivity {
     private TitleBarFragment currentFragment;
 
     private boolean isOnKeyBacking;
+    public int height;
+
+    public static int screenW;
+    public static int screenH;
 
     @Override
     public void setRootView() {
         setContentView(R.layout.activity_home);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenW = dm.widthPixels;// 获取屏幕分辨率宽度
+        screenH = dm.heightPixels;
     }
 
     @Override
@@ -66,6 +79,7 @@ public class HomeActivity extends TitleBarActivity {
     @Override
     public void widgetClick(View v) {
         super.widgetClick(v);
+        height = bottombar_group.getHeight();
         switch(v.getId()) {
             case R.id.bottombar_content1:
                 changeFragment(contentFragment1);
