@@ -27,26 +27,24 @@ public class CartAdapter extends KJAdapter<Shop> {
     }
 
     @Override
-    public void convert(final AdapterHolder helper, Shop item, boolean isScrolling) {
+    public void convert(final AdapterHolder helper, final Shop item, boolean isScrolling) {
         helper.setText(R.id.tv_shopname,item.name);
         SwipeListView mListView = (SwipeListView) helper.getConvertView().findViewById(R.id.listview);
         SwipeAdapter adapter = new SwipeAdapter(context, mListView.getRightViewWidth(),
                 new SwipeAdapter.IOnItemRightClickListener() {
                     @Override
                     public void onRightClick(View v, int position) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(context, "right onclick " + position,
+                        Toast.makeText(context, item.name + position + "right",
                                 Toast.LENGTH_SHORT).show();
                     }
-                },item.pList);
-        mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                }, new SwipeAdapter.IOnItemLeftClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(context, "item onclick " + position, Toast.LENGTH_SHORT)
-                        .show();
+            public void onLeftClick(View v, int position) {
+                Toast.makeText(context, item.name + position + "left",
+                        Toast.LENGTH_SHORT).show();
             }
-        });
+        }, item.pList);
+        mListView.setAdapter(adapter);
     }
 
     @Override

@@ -7,10 +7,12 @@
     <color name="colorAccent">#FF4081</color>
     <color name="base_bg">#F0F0F0</color>
     <color name="title_bg">#333333</color>
-    <color name="color_FD9500">#FD9500</color>
+    <color name="color_yellow_light">#FD9500</color>
+    <color name="color_yellow_dark">#EA8A00</color>
     <color name="bottom_txt">#777777</color>
     <color name="text_333">#333333</color>
     <color name="text_999">#999999</color>
+    <color name="text_999_deep">#909090</color>
     <color name="stroke">#BFBFBF</color> <!-- 边框和分割线 -->
     <color name="popup_bg">#44000000</color> <!-- 弹出窗半透明背景 -->
 </resources>

@@ -2,17 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/white">
+
+    <CheckBox
+        android:id="@+id/cbx_item"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimen_15"
+        android:layout_marginRight="@dimen/dimen_05"
+        android:gravity="center_vertical"
+        android:button="@drawable/cart_cbx"
+        android:checked="false"/>
 
     <RelativeLayout
         android:id="@+id/item_left"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="@dimen/dimen_100"
-            android:layout_height="@dimen/dimen_100"
+            android:id="@+id/iv_product"
+            android:layout_width="@dimen/dimen_85"
+            android:layout_height="@dimen/dimen_85"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="@dimen/dimen_10"
@@ -20,21 +31,84 @@
             android:layout_marginTop="@dimen/dimen_10"
             android:background="@color/colorAccent" />
 
-        <TextView
-            android:id="@+id/item_left_txt"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:padding="@dimen/dimen_12"
-            android:textColor="@android:color/black" />
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_product"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_05"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/item_left_txt"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:maxLines="2"
+                    android:singleLine="false"
+                    android:textColor="@color/text_333"
+                    android:textSize="@dimen/dimen_14_sp"
+                    android:text="Reshake赛车道字母印花T恤"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/holo_red_light"
+                        android:gravity="right"
+                        android:text="¥1,360"
+                        android:textSize="@dimen/dimen_13_sp"/>
+                    <TextView
+                        android:id="@+id/tv_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textColor="@color/text_999"
+                        android:text="x1"
+                        android:textSize="@dimen/dimen_13_sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_999"
+                    android:text="颜色:白色"
+                    android:textSize="@dimen/dimen_12_sp"/>
+                <TextView
+                    android:id="@+id/tv_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_15"
+                    android:textColor="@color/text_999"
+                    android:text="尺码:M"
+                    android:textSize="@dimen/dimen_12_sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/item_right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/color_FD9500">
+        android:background="@drawable/cart_btn_yellow">
 
         <TextView
             android:id="@+id/item_right_txt"

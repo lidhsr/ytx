@@ -31,12 +31,21 @@ public class SwipeAdapter extends BaseAdapter {
     private int mRightWidth = 0;
 
     /**
-     * 单击事件监听器
+     * 右单击事件监听器
      */
-    private IOnItemRightClickListener mListener = null;
+    private IOnItemRightClickListener mListenerRight = null;
 
     public interface IOnItemRightClickListener {
         void onRightClick(View v, int position);
+    }
+
+    /**
+     * 左单击事件监听器
+     */
+    private IOnItemLeftClickListener mListenerLeft = null;
+
+    public interface IOnItemLeftClickListener {
+        void onLeftClick(View v, int position);
     }
 
     private ArrayList<Product> list = null;
@@ -44,10 +53,12 @@ public class SwipeAdapter extends BaseAdapter {
     /**
      * @param ctx
      */
-    public SwipeAdapter(Context ctx, int rightWidth, IOnItemRightClickListener l,ArrayList<Product> list) {
+    public SwipeAdapter(Context ctx, int rightWidth, IOnItemRightClickListener mListenerRight,
+                        IOnItemLeftClickListener mListenerLeft,ArrayList<Product> list) {
         mContext = ctx;
         mRightWidth = rightWidth;
-        mListener = l;
+        this.mListenerRight = mListenerRight;
+        this.mListenerLeft = mListenerLeft;
         this.list = list;
     }
 
@@ -79,6 +90,7 @@ public class SwipeAdapter extends BaseAdapter {
             item.item_right = (View)convertView.findViewById(R.id.item_right);
             item.item_left_txt = (TextView)convertView.findViewById(R.id.item_left_txt);
             item.item_right_txt = (TextView)convertView.findViewById(R.id.item_right_txt);
+            item.iv_product = (ImageView) convertView.findViewById(R.id.iv_product);
             convertView.setTag(item);
         } else {// 有直接获得ViewHolder
             item = (ViewHolder)convertView.getTag();
@@ -88,13 +100,21 @@ public class SwipeAdapter extends BaseAdapter {
         item.item_left.setLayoutParams(lp1);
         LinearLayout.LayoutParams lp2 = new LayoutParams(mRightWidth, LayoutParams.MATCH_PARENT);
         item.item_right.setLayoutParams(lp2);
-        item.item_left_txt.setText(product.pName);
+//        item.item_left_txt.setText(product.pName);
         item.item_right_txt.setText("删除");
         item.item_right.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mListener != null) {
-                    mListener.onRightClick(v, thisPosition);
+                if (mListenerRight != null) {
+                    mListenerRight.onRightClick(v, thisPosition);
+                }
+            }
+        });
+        item.iv_product.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListenerLeft != null) {
+                    mListenerLeft.onLeftClick(v, thisPosition);
                 }
             }
         });
@@ -110,6 +130,8 @@ public class SwipeAdapter extends BaseAdapter {
         TextView item_left_txt;
 
         TextView item_right_txt;
+
+        ImageView iv_product;
     }
 }
 
