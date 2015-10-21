@@ -103,7 +103,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
         super.widgetClick(v);
         switch(v.getId()) {
             case R.id.btn_go:
-
+                activity.changeFragment(activity.contentFragment1);
                 break;
         }
     }

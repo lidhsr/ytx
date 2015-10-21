@@ -37,7 +37,7 @@ public class HomeActivity extends TitleBarActivity {
     @BindView(id = R.id.bottombar_content5, click = true)
     private RadioButton mRbtnContent5;
 
-    private TitleBarFragment contentFragment1;
+    public TitleBarFragment contentFragment1;
     private TitleBarFragment contentFragment2;
     private TitleBarFragment contentFragment3;
     private TitleBarFragment contentFragment4;
@@ -119,7 +119,22 @@ public class HomeActivity extends TitleBarActivity {
 
     public void changeFragment(TitleBarFragment targetFragment) {
         currentFragment = targetFragment;
+        changeBottomChecked(targetFragment);
         super.changeFragment(R.id.main_content, targetFragment);
+    }
+
+    private void changeBottomChecked(TitleBarFragment targetFragment) {
+        if(targetFragment instanceof MainFragment) {
+            mRbtnContent1.setChecked(true);
+        } else if(targetFragment instanceof SortFragment) {
+            mRbtnContent2.setChecked(true);
+        } else if(targetFragment instanceof ShoppingFragment) {
+            mRbtnContent3.setChecked(true);
+        } else if(targetFragment instanceof SearchFragment) {
+            mRbtnContent4.setChecked(true);
+        } else if(targetFragment instanceof MyFragment) {
+            mRbtnContent5.setChecked(true);
+        }
     }
 
     @Override
