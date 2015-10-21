@@ -3,10 +3,11 @@
     android:id="@+id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/base_bg"
+    android:cacheColorHint="@color/transparent"
     android:divider="@null"
     android:fadingEdge="none"
-    android:scrollingCache="false"
-    android:cacheColorHint="@color/transparent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollingCache="false">
 
 </org.kymjs.kjframe.pulltorefresh.PullToRefreshListView>
