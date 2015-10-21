@@ -56,6 +56,13 @@
             android:textColor="@color/text_999_deep"
             android:textSize="@dimen/dimen_16_sp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
