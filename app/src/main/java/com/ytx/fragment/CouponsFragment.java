@@ -13,19 +13,19 @@ import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
 
+import java.io.Serializable;
+
 /**
  * Created by Augustus on 15/10/18.
  */
-public class CouponsFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView> {
+public class CouponsFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
-    private HomeActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
-        activity = (HomeActivity) getActivity();
-        return View.inflate(activity, R.layout.fragment_my, null);
+        return View.inflate(getActivity(), R.layout.fragment_my, null);
     }
 
     @Override

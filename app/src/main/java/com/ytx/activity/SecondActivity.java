@@ -10,6 +10,10 @@ import com.ytx.fragment.TitleBarFragment;
  */
 public class SecondActivity extends TitleBarActivity {
 
+    private int fragmentTyep;
+    private TitleBarFragment currentFragment;
+    private CouponsFragment couponsFragment;
+
     @Override
     public void setRootView() {
         setContentView(R.layout.activity_second);
@@ -18,11 +22,27 @@ public class SecondActivity extends TitleBarActivity {
     @Override
     public void initData() {
         super.initData();
+        fragmentTyep = getIntent().getExtras().getInt(FragmentType.FRAGMENT_TYPE);
+        switch (fragmentTyep) {
+            case FragmentType.COUPONS_FRAGMENT:
+                couponsFragment = new CouponsFragment();
+                break;
+        }
     }
 
     @Override
     public void initWidget() {
         super.initWidget();
+        switch (fragmentTyep) {
+            case FragmentType.COUPONS_FRAGMENT:
+                changeFragment(couponsFragment);
+                break;
+        }
+    }
+
+    public void changeFragment(TitleBarFragment targetFragment) {
+        currentFragment = targetFragment;
+        super.changeFragment(R.id.second_content, targetFragment);
     }
 
     @Override
