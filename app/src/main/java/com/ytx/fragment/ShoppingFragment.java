@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
+import com.ytx.activity.SecondActivity;
 import com.ytx.adapter.CartAdapter;
 import com.ytx.adapter.SwipeAdapter;
+import com.ytx.app.FragmentType;
 import com.ytx.data.ActivityInfo;
 import com.ytx.data.Product;
 import com.ytx.data.Shop;
@@ -148,6 +150,11 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 }
                 cartAdapter.notifyDataSetChanged();
                 break;
+            case R.id.tv_operate:
+                Bundle extras = new Bundle();
+                extras.putInt(FragmentType.FRAGMENT_TYPE, FragmentType.COUPONS_FRAGMENT);
+                activity.showActivity(activity, SecondActivity.class, extras);
+                break;
             case R.id.recommend_01:
 
                 break;
@@ -179,7 +186,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 product.size = "MS";
                 list.add(product);
             }
-            for (int t = 0;t < 2;t++){
+            for (int t = 0; t < 2; t++) {
                 ActivityInfo info = new ActivityInfo();
                 info.content = "活动商品已满足［满500元换购］活动" + t;
                 shop.activityInfo.add(info);
