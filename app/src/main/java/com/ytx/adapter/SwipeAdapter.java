@@ -2,6 +2,7 @@
 package com.ytx.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -112,6 +113,7 @@ public class SwipeAdapter extends BaseAdapter {
             item.tv_plus = (TextView) convertView.findViewById(R.id.tv_plus);
             item.tv_product_intro = (TextView) convertView.findViewById(R.id.tv_product_intro);
             item.tv_price_edit = (TextView) convertView.findViewById(R.id.tv_price_edit);
+            item.tv_price_origin = (TextView) convertView.findViewById(R.id.tv_price_origin);
             convertView.setTag(item);
         } else {// 有直接获得ViewHolder
             item = (ViewHolder)convertView.getTag();
@@ -156,7 +158,7 @@ public class SwipeAdapter extends BaseAdapter {
         item.item_right_txt.setText("删除");
         item.tv_num_edit.setText("" + product.productNum);
         item.tv_num.setText("x"+product.productNum);
-        item.tv_price.setText("¥ " + StringUtils.addComma(""+product.price * product.productNum));
+        item.tv_price.setText("¥ " + StringUtils.addComma(""+product.price));
         item.tv_price_edit.setText("¥ " + StringUtils.addComma("" + product.price * product.productNum));
         item.item_right.setOnClickListener(onClickListener);
         item.iv_product.setOnClickListener(onClickListener);
@@ -167,6 +169,13 @@ public class SwipeAdapter extends BaseAdapter {
                 listener.todo();
             }
         });
+        item.tv_color.setText("颜色:"+product.color);
+        item.tv_size.setText("尺码:"+product.size);
+        if (product.priceOrigin > 0){
+            //item.tv_price_origin.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG); //中划线
+            item.tv_price_origin.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);  // 设置中划线并加清晰
+            item.tv_price_origin.setText("¥ " + StringUtils.addComma(""+product.priceOrigin));
+        }
         item.cbx_item.setChecked(product.isChecked);
         if (product.editable){
             item.ll_left.setVisibility(View.GONE);
@@ -190,7 +199,7 @@ public class SwipeAdapter extends BaseAdapter {
         ImageView iv_product;
         CheckBox cbx_item;
         LinearLayout ll_left_edit,ll_left,ll_product_info;
-        TextView tv_price,tv_num,tv_color,tv_size;
+        TextView tv_price,tv_num,tv_color,tv_size,tv_price_origin;
         TextView tv_minus,tv_num_edit,tv_plus,tv_product_intro,tv_price_edit;
     }
 

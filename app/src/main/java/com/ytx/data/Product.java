@@ -20,6 +20,7 @@ public class Product extends Entity implements Entity.Builder<Product> {
     public String[] colors; //商品拥有的所有颜色
     public int productNum; //商品数量
     public double price;//商品单价
+    public double priceOrigin;//商品原价
     public boolean isChecked = false;
     public boolean editable  = false;
 
@@ -41,6 +42,7 @@ public class Product extends Entity implements Entity.Builder<Product> {
         product.color = jsonObject.optString("color");
         product.productNum = jsonObject.optInt("productNum");
         product.price = jsonObject.optDouble("price");
+        product.priceOrigin = jsonObject.optDouble("priceOrigin");
         String sizesObj = jsonObject.optString("sizes");
         product.sizes = sizesObj.split(",");
         String colorsObj = jsonObject.optString("colors");

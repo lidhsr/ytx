@@ -17,7 +17,7 @@ public class Shop extends Entity implements Entity.Builder<Shop> {
     public String name; //品牌名称
     public String pic; // 品牌图标，icon，小图标
     public int coupon; //是否有优惠券，1表示有
-    public ArrayList<Product> products; //品牌下的商品
+    public ArrayList<Product> products = new ArrayList<Product>(); //品牌下的商品
     public ArrayList<ActivityInfo> activityInfo = new ArrayList<>();// 品牌下所有优惠活动
 
     public static Builder<Shop> getInfo() {

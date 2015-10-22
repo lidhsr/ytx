@@ -17,6 +17,7 @@ import com.ytx.R;
 import com.ytx.activity.HomeActivity;
 import com.ytx.adapter.CartAdapter;
 import com.ytx.adapter.SwipeAdapter;
+import com.ytx.data.ActivityInfo;
 import com.ytx.data.Product;
 import com.ytx.data.Shop;
 import com.ytx.widget.ShoppingEditPopupWindow;
@@ -172,8 +173,18 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 Product product = new Product();
                 product.pName = shop.name + "的产品" + t;
                 product.price = 1;
+                product.priceOrigin = 2;
+                product.productNum = 1;
+                product.color = "白色";
+                product.size = "MS";
                 list.add(product);
             }
+            for (int t = 0;t < 2;t++){
+                ActivityInfo info = new ActivityInfo();
+                info.content = "活动商品已满足［满500元换购］活动" + t;
+                shop.activityInfo.add(info);
+            }
+            shop.coupon = i;
             tv_total_price.setText("¥ 0.0");
             shop.products.addAll(list);
             mData.add(shop);

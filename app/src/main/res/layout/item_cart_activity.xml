@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_40"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cart_activity_icon"
+        android:layout_marginLeft="@dimen/dimen_15"
+        android:paddingBottom="@dimen/dimen_01"
+        android:paddingLeft="@dimen/dimen_05"
+        android:paddingRight="@dimen/dimen_05"
+        android:paddingTop="@dimen/dimen_01"
+        android:text="活动"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_10_sp"/>
+
+    <TextView
+        android:id="@+id/tv_activity_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dimen_15"
+        android:text="活动商品已满足［满500元换购］活动"
+        android:textColor="@color/text_333"
+        android:textSize="@dimen/dimen_11_sp"/>
+
+</LinearLayout>
