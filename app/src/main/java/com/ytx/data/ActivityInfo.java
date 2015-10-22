@@ -11,7 +11,7 @@ public class ActivityInfo extends Entity implements Entity.Builder<ActivityInfo>
     private static ActivityInfo shop;
 
     public int id;
-    public String name;
+    public String content;
     public String type;
 
     public static Builder<ActivityInfo> getInfo() {
@@ -25,7 +25,7 @@ public class ActivityInfo extends Entity implements Entity.Builder<ActivityInfo>
     public ActivityInfo create(JSONObject jsonObject) {
         ActivityInfo shop = new ActivityInfo();
         shop.id = jsonObject.optInt("id");
-        shop.name = jsonObject.optString("name");
+        shop.content = jsonObject.optString("content");
         shop.type = jsonObject.optString("type");
         return shop;
     }
