@@ -16,7 +16,9 @@ public class Shop extends Entity implements Entity.Builder<Shop> {
     public int id;
     public String name;
     public String pic;
+    public String[] activity;
     public ArrayList<Product> products = new ArrayList<>();
+    public ArrayList<ActivityInfo> activityInfo = new ArrayList<>();
 
     public static Builder<Shop> getInfo() {
         if(null == shop) {
@@ -35,9 +37,20 @@ public class Shop extends Entity implements Entity.Builder<Shop> {
         JSONArray productArray = jsonObject.optJSONArray("products");
         if(null != productArray) {
             int size = productArray.length();
+            shop.products = new ArrayList<>();
             for(int i=0; i<size; i++) {
                 JSONObject obj = productArray.optJSONObject(i);
                 shop.products.add(Product.getInfo().create(obj));
+            }
+        }
+
+        JSONArray activityInfo = jsonObject.optJSONArray("activityInfo");
+        if(null != activityInfo) {
+            int size = activityInfo.length();
+            shop.activityInfo = new ArrayList<>();
+            for(int i=0; i<size; i++) {
+                JSONObject obj = activityInfo.optJSONObject(i);
+                shop.activityInfo.add(ActivityInfo.getInfo().create(obj));
             }
         }
 
