@@ -11,6 +11,7 @@ public class Product extends Entity implements Entity.Builder<Product> {
     private static Product product;
 
     public int id;
+    public int shopId;
     public String pName;
     public String pic;
     public String size;
@@ -33,6 +34,7 @@ public class Product extends Entity implements Entity.Builder<Product> {
     public Product create(JSONObject jsonObject) {
         Product product = new Product();
         product.id = jsonObject.optInt("id");
+        product.shopId = jsonObject.optInt("shopId");
         product.pName = jsonObject.optString("pName");
         product.pic = jsonObject.optString("pic");
         product.size = jsonObject.optString("size");

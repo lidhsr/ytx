@@ -97,20 +97,20 @@ public class SortFragment extends TitleBarFragment implements OnRefreshListener<
     @Override
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
-        for (int i = 0;i < 3;i++){
-            Shop shop = new Shop();
-            shop.name = "商家" + i;
-            ArrayList<Product> list = new ArrayList<Product>();
-            for (int t = 0;t < 2;t++){
-                Product product = new Product();
-                product.pName = shop.name + "的产品" + t;
-                product.price = 1;
-                list.add(product);
-            }
-            tv_total_price.setText("¥ 0.0");
-            shop.products.addAll(list);
-            mData.add(shop);
-        }
+//        for (int i = 0;i < 3;i++){
+//            Shop shop = new Shop();
+//            shop.name = "商家" + i;
+//            ArrayList<Product> list = new ArrayList<Product>();
+//            for (int t = 0;t < 2;t++){
+//                Product product = new Product();
+//                product.pName = shop.name + "的产品" + t;
+//                product.price = 1;
+//                list.add(product);
+//            }
+//            tv_total_price.setText("¥ 0.0");
+//            shop.products.addAll(list);
+//            mData.add(shop);
+//        }
         ListView listView = pullToRefreshListView.getRefreshableView();
         cartAdapter = new CartAdapter(listView, mData, R.layout.item_cart_main, new AfterSelectedListener() {
             @Override

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/shopping_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_bg">
+    android:background="@color/base_bg"
+    android:orientation="vertical">
+
+    <org.kymjs.kjframe.pulltorefresh.PullToRefreshListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@null"
+        android:fadingEdge="none"
+        android:orientation="vertical"
+        android:scrollingCache="false" />
 
     <RelativeLayout
         android:id="@+id/rl_bottom"
@@ -11,6 +23,12 @@
         android:layout_height="@dimen/dimen_45"
         android:layout_alignParentBottom="true"
         android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0.5"
+            android:background="@color/stroke" />
 
         <CheckBox
             android:id="@+id/cbx_all"
@@ -116,23 +134,6 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/iv_line"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_0.5"
-        android:layout_above="@id/rl_bottom"
-        android:background="@color/stroke" />
-
-    <org.kymjs.kjframe.pulltorefresh.PullToRefreshListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/iv_line"
-        android:cacheColorHint="@color/transparent"
-        android:divider="@null"
-        android:fadingEdge="none"
-        android:orientation="vertical"
-        android:scrollingCache="false" />
 
     <LinearLayout
         android:id="@+id/empty_layout"
@@ -293,4 +294,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
