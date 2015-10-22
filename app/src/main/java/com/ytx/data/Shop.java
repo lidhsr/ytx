@@ -13,12 +13,12 @@ public class Shop extends Entity implements Entity.Builder<Shop> {
 
     private static Shop shop;
 
-    public int id;
-    public String name;
-    public String pic;
-    public String[] activity;
-    public ArrayList<Product> products = new ArrayList<>();
-    public ArrayList<ActivityInfo> activityInfo = new ArrayList<>();
+    public int id;  // 品牌id
+    public String name; //品牌名称
+    public String pic; // 品牌图标，icon，小图标
+    public int coupon; //是否有优惠券，1表示有
+    public ArrayList<Product> products; //品牌下的商品
+    public ArrayList<ActivityInfo> activityInfo = new ArrayList<>();// 品牌下所有优惠活动
 
     public static Builder<Shop> getInfo() {
         if(null == shop) {
@@ -32,6 +32,7 @@ public class Shop extends Entity implements Entity.Builder<Shop> {
         Shop shop = new Shop();
         shop.id = jsonObject.optInt("id");
         shop.name = jsonObject.optString("name");
+        shop.coupon = jsonObject.optInt("coupon");
         shop.pic = jsonObject.optString("pic");
         shop.products = new ArrayList<>();
         JSONArray productArray = jsonObject.optJSONArray("products");

@@ -193,6 +193,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/recommend_01"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_10"
@@ -227,6 +228,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/recommend_02"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_10"
@@ -260,6 +262,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/recommend_03"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_10"

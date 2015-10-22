@@ -10,9 +10,9 @@ public class ActivityInfo extends Entity implements Entity.Builder<ActivityInfo>
 
     private static ActivityInfo shop;
 
-    public int id;
-    public String content;
-    public String type;
+    public int id; // 品牌活动id
+    public String content; // 品牌活动内容
+    public String type; //品牌活动类型
 
     public static Builder<ActivityInfo> getInfo() {
         if(null == shop) {

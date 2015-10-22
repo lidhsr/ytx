@@ -10,18 +10,18 @@ public class Product extends Entity implements Entity.Builder<Product> {
 
     private static Product product;
 
-    public int id;
-    public int shopId;
-    public String pName;
-    public String pic;
-    public String size;
-    public String color;
-    public String[] sizes;
-    public String[] colors;
+    public int id; //商品id
+    public int shopId; // 商品所属品牌id
+    public String pName; //商品名称
+    public String pic; //商品图片
+    public String size; //用户选择的商品尺寸
+    public String color; //用户选择的商品颜色
+    public String[] sizes; //商品拥有的所有尺寸
+    public String[] colors; //商品拥有的所有颜色
+    public int productNum; //商品数量
+    public double price;//商品单价
     public boolean isChecked = false;
     public boolean editable  = false;
-    public int productNum = 1;
-    public double price = 0;
 
     public static Builder<Product> getInfo() {
         if(null == product) {

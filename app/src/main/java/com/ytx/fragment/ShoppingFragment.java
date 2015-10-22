@@ -43,6 +43,12 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     private LinearLayout empty_layout;
     @BindView(id = R.id.btn_go, click = true)
     private Button btn_go;
+    @BindView(id = R.id.recommend_01, click = true)
+    private LinearLayout recommend_01;
+    @BindView(id = R.id.recommend_02, click = true)
+    private LinearLayout recommend_02;
+    @BindView(id = R.id.recommend_03, click = true)
+    private LinearLayout recommend_03;
 
     private ArrayList<Shop> mData = new ArrayList<Shop>();
     private CartAdapter cartAdapter;
@@ -140,6 +146,15 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                     }
                 }
                 cartAdapter.notifyDataSetChanged();
+                break;
+            case R.id.recommend_01:
+
+                break;
+            case R.id.recommend_02:
+
+                break;
+            case R.id.recommend_03:
+
                 break;
         }
     }
