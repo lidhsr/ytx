@@ -111,8 +111,7 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
                 helper.setText(R.id.tv_title,item.title);
                 helper.setText(R.id.tv_intro,item.intro);
                 helper.setText(R.id.tv_invalidtime, item.invalidTime);
-                TextView btn_use = (TextView) helper.getConvertView().findViewById(R.id.btn_use);
-                btn_use.setOnClickListener(new View.OnClickListener() {
+                helper.getView(R.id.btn_use).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         ToastUtils.showMessage(getActivity(),"1111");
