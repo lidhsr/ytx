@@ -38,7 +38,7 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         activity = (SecondActivity) getActivity();
-        return View.inflate(activity, R.layout.fragment_my, null);
+        return View.inflate(activity, R.layout.fragment_coupons, null);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
     @Override
     public void onBackClick() {
         super.onBackClick();
-
+        activity.finish();
     }
 
     @Override
