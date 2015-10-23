@@ -1,9 +1,16 @@
 package com.ytx.activity;
 
+import android.app.FragmentManager;
+import android.view.KeyEvent;
+
 import com.ytx.R;
 import com.ytx.app.FragmentType;
 import com.ytx.fragment.CouponsFragment;
+import com.ytx.fragment.PayFragment;
 import com.ytx.fragment.TitleBarFragment;
+
+import org.kymjs.kjframe.tools.ToastUtils;
+import org.kymjs.kjframe.ui.KJActivityStack;
 
 /**
  * Created by Augustus on 15/10/17.
@@ -12,7 +19,7 @@ public class SecondActivity extends TitleBarActivity {
 
     private int fragmentTyep;
     private TitleBarFragment currentFragment;
-    private CouponsFragment couponsFragment;
+    private TitleBarFragment fragment;
 
     @Override
     public void setRootView() {
@@ -25,7 +32,10 @@ public class SecondActivity extends TitleBarActivity {
         fragmentTyep = getIntent().getExtras().getInt(FragmentType.FRAGMENT_TYPE);
         switch (fragmentTyep) {
             case FragmentType.COUPONS_FRAGMENT:
-                couponsFragment = new CouponsFragment();
+                fragment = new CouponsFragment();
+                break;
+            case FragmentType.PAY_FRAGMENT:
+                fragment = new PayFragment();
                 break;
         }
     }
@@ -33,11 +43,7 @@ public class SecondActivity extends TitleBarActivity {
     @Override
     public void initWidget() {
         super.initWidget();
-        switch (fragmentTyep) {
-            case FragmentType.COUPONS_FRAGMENT:
-                changeFragment(couponsFragment);
-                break;
-        }
+        changeFragment(fragment);
     }
 
     public void changeFragment(TitleBarFragment targetFragment) {
@@ -45,20 +51,37 @@ public class SecondActivity extends TitleBarActivity {
         super.changeFragment(R.id.second_content, targetFragment);
     }
 
+    public void replaceFragment(TitleBarFragment targetFragment) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.second_content, targetFragment)
+                .addToBackStack(null).commit();
+    }
+
     @Override
     protected void onBackClick() {
         super.onBackClick();
-        this.finish();
+        FragmentManager fragmentManager = getFragmentManager();
+        int count = fragmentManager.getBackStackEntryCount();
+        if(count > 0) {
+            fragmentManager.popBackStack();
+            return;
+        }
+        currentFragment.onBackClick();
     }
 
     @Override
-    protected void onMenuClick() {
-        super.onMenuClick();
+    public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            FragmentManager fragmentManager = getFragmentManager();
+            int count = fragmentManager.getBackStackEntryCount();
+            if(count > 0) {
+                fragmentManager.popBackStack();
+            } else {
+                this.finish();
+            }
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
     }
-
-    @Override
-    protected void onRightTextClick() {
-        super.onRightTextClick();
-    }
-
 }
