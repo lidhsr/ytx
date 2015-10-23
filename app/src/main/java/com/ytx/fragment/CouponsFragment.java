@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ytx.R;
-import com.ytx.activity.HomeActivity;
 import com.ytx.activity.SecondActivity;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
