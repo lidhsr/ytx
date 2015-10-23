@@ -152,7 +152,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 break;
             case R.id.tv_operate:
                 Bundle extras = new Bundle();
-                extras.putInt(FragmentType.FRAGMENT_TYPE, FragmentType.COUPONS_FRAGMENT);
+                extras.putInt(FragmentType.FRAGMENT_TYPE, FragmentType.PAY_FRAGMENT);
                 activity.showActivity(activity, SecondActivity.class, extras);
                 break;
             case R.id.recommend_01:
