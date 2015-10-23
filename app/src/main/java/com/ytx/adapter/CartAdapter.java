@@ -1,12 +1,16 @@
 package com.ytx.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ytx.R;
+import com.ytx.activity.HomeActivity;
+import com.ytx.activity.SecondActivity;
+import com.ytx.app.FragmentType;
 import com.ytx.data.ActivityInfo;
 import com.ytx.data.Shop;
 import com.ytx.fragment.SortFragment;
@@ -69,7 +73,9 @@ public class CartAdapter extends KJAdapter<Shop> {
             ll_coupon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Bundle extras = new Bundle();
+                    extras.putInt(FragmentType.FRAGMENT_TYPE, FragmentType.COUPONS_FRAGMENT);
+                    ((HomeActivity)context).showActivity(((HomeActivity)context), SecondActivity.class, extras);
                 }
             });
         }
