@@ -21,6 +21,7 @@ public class Product extends Entity implements Entity.Builder<Product> {
     public int productNum; //商品数量
     public double price;//商品单价
     public double priceOrigin;//商品原价
+    public double preferential; //已优惠
     public boolean isChecked = false;
     public boolean editable  = false;
 
@@ -47,6 +48,7 @@ public class Product extends Entity implements Entity.Builder<Product> {
         product.sizes = sizesObj.split(",");
         String colorsObj = jsonObject.optString("colors");
         product.colors = colorsObj.split(",");
+        product.preferential = jsonObject.optDouble("preferential");
         return product;
     }
 }

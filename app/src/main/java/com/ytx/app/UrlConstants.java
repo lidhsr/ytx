@@ -5,6 +5,10 @@ package com.ytx.app;
  */
 public class UrlConstants {
 
-    public final static String BASE_SERVER = "http://12";
+    /** 服务器地址 **/
+    private final static String BASE_SERVER = "http://";
+
+    /** 购物车 **/
+    public final static String URL_CART = BASE_SERVER + "";
 
 }
