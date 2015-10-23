@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
+import com.ytx.activity.SecondActivity;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -20,19 +21,21 @@ import java.io.Serializable;
  */
 public class CouponsFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
+    private SecondActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
-        return View.inflate(getActivity(), R.layout.fragment_my, null);
+        activity = (SecondActivity) getActivity();
+        return View.inflate(activity, R.layout.fragment_my, null);
     }
 
     @Override
     protected void setActionBarRes(ActionBarRes actionBarRes) {
         super.setActionBarRes(actionBarRes);
         setTitleBar(actionBarRes);
-        actionBarRes.backImageDrawable = getResources().getDrawable(R.mipmap.titlebar_back);
+        actionBarRes.backImageDrawable = getResources().getDrawable(R.drawable.titlebar_back_bg);
     }
 
     @Override
