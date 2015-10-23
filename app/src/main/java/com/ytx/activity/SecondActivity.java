@@ -1,13 +1,16 @@
 package com.ytx.activity;
 
 import android.app.FragmentManager;
-import android.util.Log;
+import android.view.KeyEvent;
 
 import com.ytx.R;
 import com.ytx.app.FragmentType;
 import com.ytx.fragment.CouponsFragment;
 import com.ytx.fragment.PayFragment;
 import com.ytx.fragment.TitleBarFragment;
+
+import org.kymjs.kjframe.tools.ToastUtils;
+import org.kymjs.kjframe.ui.KJActivityStack;
 
 /**
  * Created by Augustus on 15/10/17.
@@ -18,7 +21,7 @@ public class SecondActivity extends TitleBarActivity {
     private TitleBarFragment currentFragment;
     private TitleBarFragment fragment;
 
-        @Override
+    @Override
     public void setRootView() {
         setContentView(R.layout.activity_second);
     }
@@ -57,24 +60,28 @@ public class SecondActivity extends TitleBarActivity {
     @Override
     protected void onBackClick() {
         super.onBackClick();
-//        FragmentManager fragmentManager = getFragmentManager();
-//        int count = fragmentManager.getBackStackEntryCount();
-//        Log.e("msg", "count:" + count);
-//        if(count > 1) {
-//            fragmentManager.popBackStack();
-//            return;
-//        }
+        FragmentManager fragmentManager = getFragmentManager();
+        int count = fragmentManager.getBackStackEntryCount();
+        if(count > 0) {
+            fragmentManager.popBackStack();
+            return;
+        }
         currentFragment.onBackClick();
     }
 
     @Override
-    protected void onMenuClick() {
-        super.onMenuClick();
+    public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            FragmentManager fragmentManager = getFragmentManager();
+            int count = fragmentManager.getBackStackEntryCount();
+            if(count > 0) {
+                fragmentManager.popBackStack();
+            } else {
+                this.finish();
+            }
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
     }
-
-    @Override
-    protected void onRightTextClick() {
-        super.onRightTextClick();
-    }
-
 }

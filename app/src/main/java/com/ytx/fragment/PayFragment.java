@@ -1,5 +1,6 @@
 package com.ytx.fragment;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,15 +22,15 @@ import java.io.Serializable;
  */
 public class PayFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
-//    private SecondActivity activity;
-    @BindView(id = R.id.list)
-    private PullToRefreshListView pullToRefreshListView;
+    private SecondActivity activity;
+//    @BindView(id = R.id.list)
+//    private PullToRefreshListView pullToRefreshListView;
     @BindView(id = R.id.button, click = true)
     private Button button;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
-//        activity = (SecondActivity) getActivity();
+        activity = (SecondActivity) getActivity();
         return View.inflate(getActivity(), R.layout.fragment_pay, null);
     }
 
@@ -61,7 +62,7 @@ public class PayFragment extends TitleBarFragment implements PullToRefreshBase.O
         super.widgetClick(v);
         switch (v.getId()) {
             case R.id.button:
-//                activity.changeFragment(new CouponsFragment());
+                activity.replaceFragment(new CouponsFragment());
                 break;
         }
     }
@@ -69,14 +70,20 @@ public class PayFragment extends TitleBarFragment implements PullToRefreshBase.O
     @Override
     public void onBackClick() {
         super.onBackClick();
-//        activity.finish();
+        FragmentManager fragmentManager = getFragmentManager();
+        int count = fragmentManager.getBackStackEntryCount();
+        if(count > 0) {
+            fragmentManager.popBackStack();
+            return;
+        }
+        activity.finish();
     }
 
     @Override
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
-        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-        pullToRefreshListView.setOnRefreshListener(this);
+//        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+//        pullToRefreshListView.setOnRefreshListener(this);
     }
 
     @Override
