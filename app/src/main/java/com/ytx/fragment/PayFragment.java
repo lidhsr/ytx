@@ -2,6 +2,7 @@ package com.ytx.fragment;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,6 @@ import java.io.Serializable;
 public class PayFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
-//    @BindView(id = R.id.list)
-//    private PullToRefreshListView pullToRefreshListView;
     @BindView(id = R.id.button, click = true)
     private Button button;
 
@@ -82,8 +81,13 @@ public class PayFragment extends TitleBarFragment implements PullToRefreshBase.O
     @Override
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
-//        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-//        pullToRefreshListView.setOnRefreshListener(this);
+        Log.e("msg", "initWidget");
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        Log.e("msg", "initData");
     }
 
     @Override

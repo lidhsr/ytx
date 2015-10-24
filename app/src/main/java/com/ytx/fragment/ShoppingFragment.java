@@ -151,7 +151,9 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 cartAdapter.notifyDataSetChanged();
                 break;
             case R.id.tv_operate:
-
+                Bundle bundle = new Bundle();
+                bundle.putInt(FragmentType.FRAGMENT_TYPE, FragmentType.ORDER_CONFIRM_FRAGMENT);
+                activity.showActivity(activity, SecondActivity.class, bundle);
                 break;
             case R.id.recommend_01:
 

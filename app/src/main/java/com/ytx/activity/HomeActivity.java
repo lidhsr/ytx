@@ -118,6 +118,9 @@ public class HomeActivity extends TitleBarActivity {
     }
 
     public void changeFragment(TitleBarFragment targetFragment) {
+        if(null != currentFragment && currentFragment.equals(targetFragment)) {
+            return;
+        }
         currentFragment = targetFragment;
         changeBottomChecked(targetFragment);
         super.changeFragment(R.id.main_content, targetFragment);

@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import com.ytx.R;
 import com.ytx.app.FragmentType;
 import com.ytx.fragment.CouponsFragment;
+import com.ytx.fragment.OrderConfirmFragment;
 import com.ytx.fragment.PayFragment;
 import com.ytx.fragment.TitleBarFragment;
 
@@ -36,6 +37,9 @@ public class SecondActivity extends TitleBarActivity {
                 break;
             case FragmentType.PAY_FRAGMENT:
                 fragment = new PayFragment();
+                break;
+            case FragmentType.ORDER_CONFIRM_FRAGMENT:
+                fragment = new OrderConfirmFragment();
                 break;
         }
     }

@@ -1,21 +1,21 @@
 package com.ytx.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
 import com.ytx.activity.SecondActivity;
 import com.ytx.app.FragmentType;
 import com.ytx.data.ActivityInfo;
+import com.ytx.data.Product;
 import com.ytx.data.Shop;
-import com.ytx.fragment.SortFragment;
 import com.ytx.widget.MyListView;
-import com.ytx.widget.SwipeListView;
 
 import org.kymjs.kjframe.widget.AdapterHolder;
 import org.kymjs.kjframe.widget.KJAdapter;
@@ -25,43 +25,40 @@ import java.util.Collection;
 /**
  * Created by xiezuoyuan on 15/10/20.
  */
-public class CartAdapter extends KJAdapter<Shop> {
+public class OrderCoinfirmAdapter extends KJAdapter<Shop> {
     private Context context;
-    private SortFragment.AfterSelectedListener listener;
-    private SwipeAdapter adapter;
-    private SwipeAdapter.PopupClickListener popupClickListener;
+    private KJAdapter<Product> productKJAdapter;
     private KJAdapter<ActivityInfo> kjAdapter;
 
-    public CartAdapter(AbsListView view, Collection mDatas, int itemLayoutId, SortFragment.AfterSelectedListener listener) {
+    public OrderCoinfirmAdapter(AbsListView view, Collection mDatas, int itemLayoutId) {
         super(view, mDatas, itemLayoutId);
         context = view.getContext();
-        this.listener = listener;
     }
 
     @Override
     public void convert(final AdapterHolder helper, final Shop item, boolean isScrolling) {
         helper.setText(R.id.tv_shopname, item.name);
-        SwipeListView mListView = (SwipeListView) helper.getConvertView().findViewById(R.id.listview);
-        adapter = new SwipeAdapter(context, mListView.getRightViewWidth(),
-                new SwipeAdapter.IOnItemRightClickListener() {
-                    @Override
-                    public void onRightClick(View v, int position) {
-                        Toast.makeText(context, item.name + position + "right",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                }, new SwipeAdapter.IOnItemLeftClickListener() {
+        MyListView myListViewProduct = (MyListView) helper.getConvertView().findViewById(R.id.myListViewProduct);
+        productKJAdapter = new KJAdapter<Product>(myListViewProduct, item.products, R.layout.item_order_product) {
+
             @Override
-            public void onLeftClick(View v, int position) {
-                Toast.makeText(context, item.name + position + "left",
-                        Toast.LENGTH_SHORT).show();
+            public void convert(AdapterHolder helper, Product productInfo, boolean isScrolling, int position) {
+                helper.setText(R.id.item_left_txt, productInfo.pName);
+                helper.setText(R.id.tv_price, String.valueOf(productInfo.price));
+                helper.setText(R.id.tv_color, "颜色:" + productInfo.color);
+                helper.setText(R.id.tv_size, "尺寸:" + productInfo.size);
+                helper.setText(R.id.tv_num, "x " + productInfo.productNum);
+                helper.setText(R.id.tv_coupons, "已优惠 ¥" + productInfo.preferential);
+                TextView tv = helper.getView(R.id.tv_price_origin);
+                tv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+                tv.setText(String.valueOf(productInfo.priceOrigin));
             }
-        }, item.products, listener);
-        mListView.setAdapter(adapter);
-        if (null != popupClickListener) {
-            adapter.setPopupClickListener(popupClickListener);
-        }
+        };
+        myListViewProduct.setAdapter(productKJAdapter);
+
         MyListView myListView = (MyListView) helper.getConvertView().findViewById(R.id.myListView);
         kjAdapter = new KJAdapter<ActivityInfo>(myListView, item.activityInfo, R.layout.item_cart_activity) {
+
             @Override
             public void convert(AdapterHolder helper, ActivityInfo activityInfo, boolean isScrolling, int position) {
                 helper.setText(R.id.tv_activity_content, activityInfo.content);
@@ -80,10 +77,6 @@ public class CartAdapter extends KJAdapter<Shop> {
             });
         }
         ll_coupon.setVisibility(item.coupon == 1 ? View.VISIBLE : View.GONE);
-    }
-
-    public void setPopupClickListener(SwipeAdapter.PopupClickListener listener) {
-        this.popupClickListener = listener;
     }
 
     @Override

@@ -7,6 +7,7 @@ public class FragmentType {
 
     public final static String FRAGMENT_TYPE = "type";
     public final static int COUPONS_FRAGMENT = 1; // 优惠券
-    public final static int PAY_FRAGMENT = 2; // 填写订单
+    public final static int PAY_FRAGMENT = 2; // 支付
+    public final static int ORDER_CONFIRM_FRAGMENT = 3; // 填写订单
 
 }
