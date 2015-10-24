@@ -216,20 +216,26 @@
             android:id="@+id/bottom_tabbar_rb_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_weight="1"
+            android:button="@drawable/radio_bg"
             android:drawableLeft="@mipmap/order_zhifubao"
             android:drawablePadding="@dimen/dimen_05"
+            android:padding="@dimen/dimen_10"
             android:text="支付宝支付" />
 
         <RadioButton
             android:id="@+id/bottom_tabbar_rb_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_weight="1"
+            android:button="@drawable/radio_bg"
             android:drawableLeft="@mipmap/order_wx"
             android:drawablePadding="@dimen/dimen_05"
+            android:padding="@dimen/dimen_10"
             android:text="微信支付" />
     </RadioGroup>
 
