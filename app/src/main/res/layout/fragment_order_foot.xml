@@ -108,7 +108,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -122,11 +122,16 @@
             android:text="可用55积分抵¥0.55"
             android:textColor="@color/text_333"
             android:textSize="@dimen/dimen_14_sp" />
+
+        <org.kymjs.kjframe.widget.switchbutton.SwitchButton
+            android:id="@+id/jifen_switch"
+            style="@style/MaterialDesignStyle"
+            android:checked="false" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10"
         android:background="@color/white"
         android:gravity="center_vertical"
@@ -140,6 +145,11 @@
             android:text="发票"
             android:textColor="@color/text_333"
             android:textSize="@dimen/dimen_14_sp" />
+
+        <org.kymjs.kjframe.widget.switchbutton.SwitchButton
+            android:id="@+id/fapiao_switch"
+            style="@style/MaterialDesignStyle"
+            android:checked="false" />
     </LinearLayout>
 
     <ImageView

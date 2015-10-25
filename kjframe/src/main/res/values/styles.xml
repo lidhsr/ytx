@@ -5,4 +5,24 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="MD">
+        <item name="kswAnimationVelocity">6</item>
+        <item name="kswInsetBottom">0dp</item>
+        <item name="kswInsetTop">0dp</item>
+        <item name="kswInsetLeft">16dp</item>
+        <item name="kswInsetRight">16dp</item>
+        <item name="kswMeasureFactor">1.4</item>
+        <item name="kswOffDrawable">@drawable/md_back_off</item>
+        <item name="kswOnDrawable">@drawable/md_back_on</item>
+        <item name="kswThumbDrawable">@drawable/md_thumb</item>
+        <item name="kswThumb_margin">-17dp</item>
+    </style>
+
+    <style name="MaterialDesignStyle" parent="MD">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
 </resources>
