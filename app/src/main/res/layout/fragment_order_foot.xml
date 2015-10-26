@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ksw="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -125,8 +126,15 @@
 
         <org.kymjs.kjframe.widget.switchbutton.SwitchButton
             android:id="@+id/jifen_switch"
-            style="@style/MaterialDesignStyle"
-            android:checked="false" />
+            style="@style/SwitchButtonStyle"
+            android:checked="false"
+            ksw:kswAnimationVelocity="8"
+            ksw:kswMeasureFactor="1.5"
+            ksw:kswOffColor="#D5D5D5"
+            ksw:kswOffDrawable="@drawable/md_back_off_bg"
+            ksw:kswOnColor="#FD9500"
+            ksw:kswThumbDrawable="@drawable/md_thumb_bg"
+            ksw:kswThumb_margin="-14dp" />
     </LinearLayout>
 
     <View
@@ -153,8 +161,15 @@
 
         <org.kymjs.kjframe.widget.switchbutton.SwitchButton
             android:id="@+id/fapiao_switch"
-            style="@style/MaterialDesignStyle"
-            android:checked="false" />
+            style="@style/SwitchButtonStyle"
+            android:checked="false"
+            ksw:kswAnimationVelocity="8"
+            ksw:kswMeasureFactor="1.5"
+            ksw:kswOffColor="#D5D5D5"
+            ksw:kswOffDrawable="@drawable/md_back_off_bg"
+            ksw:kswOnColor="#FD9500"
+            ksw:kswThumbDrawable="@drawable/md_thumb_bg"
+            ksw:kswThumb_margin="-14dp" />
     </LinearLayout>
 
     <ImageView
@@ -225,13 +240,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_10"
+        android:layout_marginLeft="@dimen/dimen_10"
         android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/bottom_tabbar_rb_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_weight="1"
             android:button="@drawable/radio_bg"
@@ -244,7 +259,6 @@
             android:id="@+id/bottom_tabbar_rb_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_weight="1"
             android:button="@drawable/radio_bg"

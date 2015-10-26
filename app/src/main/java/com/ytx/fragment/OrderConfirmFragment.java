@@ -37,6 +37,8 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         activity = (SecondActivity) getActivity();
+        order_head = LayoutInflater.from(activity).inflate(R.layout.fragment_order_head, null);
+        order_foot = LayoutInflater.from(activity).inflate(R.layout.fragment_order_foot, null);
         return View.inflate(getActivity(), R.layout.fragment_order_confirm, null);
     }
 
@@ -86,8 +88,6 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.DISABLED);
-        order_head = LayoutInflater.from(activity).inflate(R.layout.fragment_order_head, null);
-        order_foot = LayoutInflater.from(activity).inflate(R.layout.fragment_order_foot, null);
         pullToRefreshListView.getRefreshableView().addHeaderView(order_head);
         pullToRefreshListView.getRefreshableView().addFooterView(order_foot);
 

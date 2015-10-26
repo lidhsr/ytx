@@ -12,10 +12,19 @@
         <item name="kswInsetLeft">16dp</item>
         <item name="kswInsetRight">16dp</item>
         <item name="kswMeasureFactor">1.4</item>
-        <item name="kswOffDrawable">@drawable/md_back_off</item>
+        <item name="kswOffDrawable">@drawable/md_back_off_bg</item>
         <item name="kswOnDrawable">@drawable/md_back_on</item>
-        <item name="kswThumbDrawable">@drawable/md_thumb</item>
-        <item name="kswThumb_margin">-17dp</item>
+        <item name="kswThumbDrawable">@drawable/md_thumb_bg</item>
+        <item name="kswThumb_margin">0dp</item>
+    </style>
+
+    <style name="SwitchButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
     </style>
 
     <style name="MaterialDesignStyle" parent="MD">
