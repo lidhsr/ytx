@@ -31,6 +31,8 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
     private SecondActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
+    @BindView(id = R.id.layout_coupons_empty)
+    private View coupons_empty;
     private ArrayList<Coupons> mData = new ArrayList<>();
     private ArrayList<Coupons> mDataValid = new ArrayList<>();
     private ArrayList<Coupons> mDataInvalid = new ArrayList<>();
@@ -75,46 +77,48 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
         super.initWidget(parentView);
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         pullToRefreshListView.setOnRefreshListener(this);
-        Coupons c = new Coupons();
-        c.intro = "单笔订单满999元可用";
-        c.invalidTime = "有效期至 2015-12-30 23:59";
-        c.price = 20;
-        c.title = "女装频道专用抵用券1";
-        c.status = 1;
-        mDataValid.add(c);
-        Coupons c2 = new Coupons();
-        c2.intro = "单笔订单满1000元可用";
-        c2.invalidTime = "有效期至 2015-12-30 23:59";
-        c2.price = 200;
-        c2.title = "女装频道专用抵用券2";
-        c2.status = 1;
-        mDataValid.add(c2);
-        Coupons c1 = new Coupons();
-        c1.intro = "单笔订单满888元可用";
-        c1.invalidTime = "有效期至 2015-09-30 23:59";
-        c1.price = 20;
-        c1.title = "全场通用抵用券1";
-        c1.status = 1;
-        mDataInvalid.add(c1);
-        Coupons c3 = new Coupons();
-        c3.intro = "单笔订单满888元可用";
-        c3.invalidTime = "有效期至 2015-09-30 23:59";
-        c3.price = 20;
-        c3.title = "全场通用抵用券2";
-        c3.status = 1;
-        mDataInvalid.add(c3);
+        pullToRefreshListView.setEmptyView(coupons_empty);
+
+//        Coupons c = new Coupons();
+//        c.intro = "单笔订单满999元可用";
+//        c.invalidTime = "有效期至 2015-12-30 23:59";
+//        c.price = 20;
+//        c.title = "女装频道专用抵用券1";
+//        c.status = 1;
+//        mDataValid.add(c);
+//        Coupons c2 = new Coupons();
+//        c2.intro = "单笔订单满1000元可用";
+//        c2.invalidTime = "有效期至 2015-12-30 23:59";
+//        c2.price = 200;
+//        c2.title = "女装频道专用抵用券2";
+//        c2.status = 1;
+//        mDataValid.add(c2);
+//        Coupons c1 = new Coupons();
+//        c1.intro = "单笔订单满888元可用";
+//        c1.invalidTime = "有效期至 2015-09-30 23:59";
+//        c1.price = 20;
+//        c1.title = "全场通用抵用券1";
+//        c1.status = 1;
+//        mDataInvalid.add(c1);
+//        Coupons c3 = new Coupons();
+//        c3.intro = "单笔订单满888元可用";
+//        c3.invalidTime = "有效期至 2015-09-30 23:59";
+//        c3.price = 20;
+//        c3.title = "全场通用抵用券2";
+//        c3.status = 1;
+//        mDataInvalid.add(c3);
         ListView listView = pullToRefreshListView.getRefreshableView();
-        listView.setAdapter(new KJAdapter<Coupons>(listView,mDataValid,R.layout.item_coupon_main) {
+        listView.setAdapter(new KJAdapter<Coupons>(listView, mDataValid, R.layout.item_coupon_main) {
             @Override
             public void convert(AdapterHolder helper, Coupons item, boolean isScrolling, int position) {
-                helper.setText(R.id.tv_price,""+item.price);
-                helper.setText(R.id.tv_title,item.title);
-                helper.setText(R.id.tv_intro,item.intro);
+                helper.setText(R.id.tv_price, "" + item.price);
+                helper.setText(R.id.tv_title, item.title);
+                helper.setText(R.id.tv_intro, item.intro);
                 helper.setText(R.id.tv_invalidtime, item.invalidTime);
                 helper.getView(R.id.btn_use).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ToastUtils.showMessage(getActivity(),"1111");
+                        ToastUtils.showMessage(getActivity(), "1111");
                     }
                 });
             }
@@ -142,8 +146,6 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
                 listView.addFooterView(footView);
             }
         }
-
-
     }
 
     @Override
