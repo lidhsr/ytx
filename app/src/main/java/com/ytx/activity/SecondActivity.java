@@ -10,9 +10,6 @@ import com.ytx.fragment.OrderConfirmFragment;
 import com.ytx.fragment.PayFragment;
 import com.ytx.fragment.TitleBarFragment;
 
-import org.kymjs.kjframe.tools.ToastUtils;
-import org.kymjs.kjframe.ui.KJActivityStack;
-
 /**
  * Created by Augustus on 15/10/17.
  */
@@ -55,10 +52,9 @@ public class SecondActivity extends TitleBarActivity {
         super.changeFragment(R.id.second_content, targetFragment);
     }
 
-    public void replaceFragment(TitleBarFragment targetFragment) {
-        getFragmentManager().beginTransaction()
-                .replace(R.id.second_content, targetFragment)
-                .addToBackStack(null).commit();
+    public void changeFragment(TitleBarFragment targetFragment, boolean isBack) {
+        currentFragment = targetFragment;
+        super.changeFragment(R.id.second_content, targetFragment, isBack);
     }
 
     @Override
@@ -70,7 +66,7 @@ public class SecondActivity extends TitleBarActivity {
             fragmentManager.popBackStack();
             return;
         }
-        currentFragment.onBackClick();
+        this.finish();
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.ytx.fragment;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +38,7 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
         activity = (SecondActivity) getActivity();
         order_head = LayoutInflater.from(activity).inflate(R.layout.fragment_order_head, null);
         order_foot = LayoutInflater.from(activity).inflate(R.layout.fragment_order_foot, null);
+        order_head.setOnClickListener(this);
         return View.inflate(getActivity(), R.layout.fragment_order_confirm, null);
     }
 
@@ -68,19 +68,14 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
     @Override
     protected void widgetClick(View v) {
         super.widgetClick(v);
-        switch (v.getId()) {
+        if(v == order_head) {
+            activity.changeFragment(new AddressFragment(), true);
         }
     }
 
     @Override
     public void onBackClick() {
         super.onBackClick();
-        FragmentManager fragmentManager = getFragmentManager();
-        int count = fragmentManager.getBackStackEntryCount();
-        if(count > 0) {
-            fragmentManager.popBackStack();
-            return;
-        }
         activity.finish();
     }
 

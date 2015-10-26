@@ -61,7 +61,8 @@ public class PayFragment extends TitleBarFragment implements PullToRefreshBase.O
         super.widgetClick(v);
         switch (v.getId()) {
             case R.id.button:
-                activity.replaceFragment(new CouponsFragment());
+//                activity.replaceFragment(new CouponsFragment());
+                activity.changeFragment(new CouponsFragment());
                 break;
         }
     }

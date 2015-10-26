@@ -327,4 +327,35 @@ public abstract class KJActivity extends FragmentActivity implements
         currentSupportFragment = targetFragment;
         transaction.commit();
     }
+
+    /**
+     * 用Fragment替换视图
+     *
+     * @param resView        将要被替换掉的视图
+     * @param targetFragment 用来替换的Fragment
+     * @param isBack  处理是否添加到回退池，true为添加
+     */
+    public void changeFragment(int resView, KJFragment targetFragment, boolean isBack) {
+        if (targetFragment.equals(currentKJFragment)) {
+            return;
+        }
+        FragmentTransaction transaction = getFragmentManager()
+                .beginTransaction();
+        if (!targetFragment.isAdded()) {
+            transaction.add(resView, targetFragment, targetFragment.getClass()
+                    .getName());
+        }
+        if (targetFragment.isHidden()) {
+            transaction.show(targetFragment);
+            targetFragment.onChange();
+        }
+        if (currentKJFragment != null && currentKJFragment.isVisible()) {
+            transaction.hide(currentKJFragment);
+        }
+        if(isBack) {
+            transaction.addToBackStack(null);
+        }
+        currentKJFragment = targetFragment;
+        transaction.commit();
+    }
 }
