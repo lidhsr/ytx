@@ -5,3 +5,13 @@
 .DS_Store
 /build
 /captures
+
+.idea/gradle.xml
+
+.idea/vcs.xml
+
+.idea/misc.xml
+
+.idea/gradle.xml
+
+.idea/codeStyleSettings.xml
