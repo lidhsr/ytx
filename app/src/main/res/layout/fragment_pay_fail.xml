@@ -53,6 +53,7 @@
             android:textColor="@color/text_333"
             android:textSize="@dimen/dimen_18"/>
         <TextView
+            android:id="@+id/tv_reason"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="超过账户单笔限额[500]"

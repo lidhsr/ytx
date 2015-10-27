@@ -20,6 +20,8 @@ public class PayFailFragment extends TitleBarFragment {
 
     @BindView(id = R.id.tv_btn, click = true)
     private TextView tv_btn;
+    @BindView(id = R.id.tv_reason)
+    private TextView tv_reason;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {

@@ -19,9 +19,13 @@ public class PaySuccessFragment extends TitleBarFragment {
     private SecondActivity activity;
 
     @BindView(id = R.id.tv_goon,click = true)
-    private TextView tv_goon;
+    private TextView tv_goon;//继续购物
     @BindView(id = R.id.tv_order , click = true)
-    private TextView tv_order;
+    private TextView tv_order;//订单详情
+    @BindView(id = R.id.tv_pay_money)
+    private TextView tv_pay_money;//支付金额
+    @BindView(id = R.id.tv_order_number)
+    private TextView tv_order_number;//订单号
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
