@@ -1,5 +1,6 @@
 package com.ytx.fragment;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.ytx.activity.SecondActivity;
 import com.ytx.adapter.AddressAdapter;
 import com.ytx.data.AddressInfo;
 import com.ytx.listener.OnClickListener;
+import com.ytx.widget.DialogTools;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -32,6 +34,7 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
     private LinearLayout layout_address_add;
     private AddressAdapter adapter;
     private ArrayList<AddressInfo> data = new ArrayList<>();
+    private AlertDialog dialog;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -69,6 +72,13 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
             case R.id.layout_address_add:
 
                 break;
+            case R.id.tv_ok:
+                dialog.dismiss();
+
+                break;
+            case R.id.tv_no:
+                dialog.dismiss();
+                break;
         }
     }
 
@@ -105,15 +115,25 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
     }
 
     @Override
-    public void onClick(int position) {
-        int size = data.size();
-        for(int i=0; i<size; i++) {
-            AddressInfo info = data.get(i);
-            info.isChecked = false;
-            if(i == position) {
-                info.isChecked = true;
-            }
+    public void onClick(int position, View v) {
+        switch(v.getId()) {
+            case R.id.rb_check:
+                int size = data.size();
+                for(int i=0; i<size; i++) {
+                    AddressInfo info = data.get(i);
+                    info.isChecked = false;
+                    if(i == position) {
+                        info.isChecked = true;
+                    }
+                }
+                adapter.notifyDataSetChanged();
+                break;
+            case R.id.btn_edit:
+
+                break;
+            case R.id.btn_del:
+                dialog = DialogTools.showCustomDialog(activity, "确认删除", "确认删除此收货地址吗?", this);
+                break;
         }
-        adapter.notifyDataSetChanged();
     }
 }

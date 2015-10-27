@@ -14,6 +14,7 @@ public class AddressInfo extends Entity implements Entity.Builder<AddressInfo> {
     public String name; // 收货人
     public String mobile; //联系电话
     public String address; // 地址
+    public int isDefault; // 是否默认地址，1为是
     public boolean isChecked; // 是否已经选择
 
     public static Builder<AddressInfo> getInfo() {
@@ -29,6 +30,7 @@ public class AddressInfo extends Entity implements Entity.Builder<AddressInfo> {
         info.id = jsonObject.optInt("id");
         info.mobile = jsonObject.optString("mobile");
         info.address = jsonObject.optString("address");
+        info.isDefault = jsonObject.optInt("isDefault");
         info.isChecked = false;
         return info;
     }
