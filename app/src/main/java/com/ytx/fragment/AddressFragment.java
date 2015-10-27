@@ -141,6 +141,9 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
             case R.id.btn_del:
                 dialog = DialogTools.showCustomDialog(activity, "确认删除", "确认删除此收货地址吗?", this);
                 break;
+            case R.id.layout_item_address:
+                getFragmentManager().popBackStack();
+                break;
         }
     }
 }
