@@ -17,6 +17,7 @@ import com.ytx.widget.DialogTools;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
+import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
 
 import java.io.Serializable;
@@ -70,14 +71,11 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
         super.widgetClick(v);
         switch (v.getId()) {
             case R.id.layout_address_add:
-
-                break;
-            case R.id.tv_ok:
-                dialog.dismiss();
-
-                break;
-            case R.id.tv_no:
-                dialog.dismiss();
+                AddressEditorFragment addressEditorFragment = new AddressEditorFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("add", 1);
+                addressEditorFragment.setArguments(bundle);
+                activity.changeFragment(addressEditorFragment, true);
                 break;
         }
     }
@@ -115,7 +113,7 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
     }
 
     @Override
-    public void onClick(int position, View v) {
+    public void onClick(final int position, View v) {
         switch(v.getId()) {
             case R.id.rb_check:
                 int size = data.size();
@@ -129,10 +127,31 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.btn_edit:
-
+                AddressEditorFragment addressEditorFragment = new AddressEditorFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("add", 2);
+                addressEditorFragment.setArguments(bundle);
+                activity.changeFragment(addressEditorFragment, true);
                 break;
             case R.id.btn_del:
-                dialog = DialogTools.showCustomDialog(activity, "确认删除", "确认删除此收货地址吗?", this);
+                dialog = DialogTools.showCustomDialog(activity, "确认删除", "确认删除此收货地址吗?",
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                switch (v.getId()) {
+                                    case R.id.tv_ok:
+                                        ToastUtils.showMessage(activity, "position : " + position);
+                                        dialog.dismiss();
+                                        break;
+                                    case R.id.tv_no:
+                                        dialog.dismiss();
+                                        break;
+                                }
+                            }
+                });
+                break;
+            case R.id.layout_item_address:
+                getFragmentManager().popBackStack();
                 break;
         }
     }

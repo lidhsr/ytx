@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -62,6 +63,16 @@ public class AddressAdapter extends KJAdapter<AddressInfo> {
             public void onClick(View v) {
                 if (null != listener) {
                     listener.onClick(position, btn_del);
+                }
+            }
+        });
+
+        final LinearLayout layout = helper.getView(R.id.layout_item_address);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != listener) {
+                    listener.onClick(position, layout);
                 }
             }
         });

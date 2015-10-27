@@ -51,7 +51,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:gravity="center"
-                android:background="@drawable/btn_white_yellow_bg"
+                android:background="@drawable/btn_dialog_bg"
                 android:text="确定"
                 android:textSize="16sp"
                 android:textColor="@drawable/text_black_yellow_bg"/>
@@ -67,7 +67,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:gravity="center"
-                android:background="@drawable/btn_white_yellow_bg"
+                android:background="@drawable/btn_dialog_bg"
                 android:text="取消"
                 android:textSize="16sp"
                 android:textColor="@drawable/text_black_yellow_bg"/>
