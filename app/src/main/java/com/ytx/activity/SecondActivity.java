@@ -70,6 +70,12 @@ public class SecondActivity extends TitleBarActivity {
     }
 
     @Override
+    protected void onRightTextClick() {
+        super.onRightTextClick();
+        currentFragment.onRightTxtClick();
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             FragmentManager fragmentManager = getFragmentManager();

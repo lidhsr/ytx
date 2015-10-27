@@ -70,11 +70,14 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
         super.widgetClick(v);
         switch (v.getId()) {
             case R.id.layout_address_add:
-
+                AddressEditorFragment addressEditorFragment = new AddressEditorFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("add", 1);
+                addressEditorFragment.setArguments(bundle);
+                activity.changeFragment(addressEditorFragment, true);
                 break;
             case R.id.tv_ok:
                 dialog.dismiss();
-
                 break;
             case R.id.tv_no:
                 dialog.dismiss();
@@ -129,7 +132,11 @@ public class AddressFragment extends TitleBarFragment implements PullToRefreshBa
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.btn_edit:
-
+                AddressEditorFragment addressEditorFragment = new AddressEditorFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("add", 2);
+                addressEditorFragment.setArguments(bundle);
+                activity.changeFragment(addressEditorFragment, true);
                 break;
             case R.id.btn_del:
                 dialog = DialogTools.showCustomDialog(activity, "确认删除", "确认删除此收货地址吗?", this);

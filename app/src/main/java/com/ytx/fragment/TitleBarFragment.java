@@ -78,6 +78,12 @@ public abstract class TitleBarFragment extends KJFragment {
         }
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        onChange();
+    }
+
     /**
      * 方便Fragment中设置ActionBar资源
      * 
