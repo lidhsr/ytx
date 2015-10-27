@@ -14,7 +14,7 @@
     <color name="text_999">#999999</color>
     <color name="text_999_deep">#909090</color>
     <color name="stroke">#BFBFBF</color> <!-- 边框和分割线 -->
-    <color name="line">#eeeeee</color> <!-- 分割线 -->
+    <color name="line">#D6D7D8</color> <!-- 分割线 -->
     <color name="popup_bg">#44000000</color> <!-- 弹出窗半透明背景 -->
     <color name="pay_success">#26af00</color> <!-- 支付成功字体颜色 -->
     <color name="pay_fail">#fd9500</color> <!-- 支付失败字体颜色 -->

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ytx.R;
 import com.ytx.activity.SecondActivity;
@@ -32,6 +33,8 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
     private View order_foot;
     private ArrayList<Shop> mData = new ArrayList<Shop>();
     private OrderCoinfirmAdapter orderCoinfirmAdapter;
+    @BindView(id = R.id.tv_operate,click = true)
+    private TextView tv_operate;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -70,6 +73,9 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
         super.widgetClick(v);
         if(v == order_head) {
             activity.changeFragment(new AddressFragment(), true);
+        }
+        if (v == tv_operate){
+            activity.changeFragment(new PayFragment(), true);
         }
     }
 

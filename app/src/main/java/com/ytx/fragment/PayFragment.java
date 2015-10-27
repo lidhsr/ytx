@@ -13,7 +13,6 @@ import com.ytx.R;
 import com.ytx.activity.SecondActivity;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
-import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
 
 import java.io.Serializable;
@@ -24,8 +23,10 @@ import java.io.Serializable;
 public class PayFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
-    @BindView(id = R.id.button, click = true)
-    private Button button;
+    @BindView(id = R.id.button1, click = true)
+    private Button button1;
+    @BindView(id = R.id.button2, click = true)
+    private Button button2;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -60,9 +61,13 @@ public class PayFragment extends TitleBarFragment implements PullToRefreshBase.O
     protected void widgetClick(View v) {
         super.widgetClick(v);
         switch (v.getId()) {
-            case R.id.button:
+            case R.id.button1:
 //                activity.replaceFragment(new CouponsFragment());
-                activity.changeFragment(new CouponsFragment());
+                activity.changeFragment(new PaySuccessFragment(),true);
+                break;
+            case R.id.button2:
+//                activity.replaceFragment(new CouponsFragment());
+                activity.changeFragment(new PayFailFragment(),true);
                 break;
         }
     }
