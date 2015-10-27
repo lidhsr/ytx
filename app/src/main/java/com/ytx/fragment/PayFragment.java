@@ -63,7 +63,8 @@ public class PayFragment extends TitleBarFragment implements PullToRefreshBase.O
         switch (v.getId()) {
             case R.id.button1:
 //                activity.replaceFragment(new CouponsFragment());
-                activity.changeFragment(new PaySuccessFragment(),true);
+//                activity.changeFragment(new PaySuccessFragment(),true);
+                activity.changeFragment(new LogisticsFragment(),true);
                 break;
             case R.id.button2:
 //                activity.replaceFragment(new CouponsFragment());

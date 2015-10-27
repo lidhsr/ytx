@@ -18,5 +18,6 @@
     <color name="popup_bg">#44000000</color> <!-- 弹出窗半透明背景 -->
     <color name="pay_success">#26af00</color> <!-- 支付成功字体颜色 -->
     <color name="pay_fail">#fd9500</color> <!-- 支付失败字体颜色 -->
+    <color name="blue_phone">#009cfb</color> <!-- 电话号码颜色 -->
 
 </resources>

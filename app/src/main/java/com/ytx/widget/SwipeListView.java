@@ -23,7 +23,7 @@ public class SwipeListView extends ListView {
 
     private float mFirstY;
 
-    private int mRightViewWidth = HomeActivity.screenW / 4;
+    private int mRightViewWidth = HomeActivity.screenW / 5;
 
     // private boolean mIsInAnimation = false;
     private final int mDuration = 100;
