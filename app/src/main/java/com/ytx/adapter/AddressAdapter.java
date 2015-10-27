@@ -3,6 +3,7 @@ package com.ytx.adapter;
 import android.content.Context;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -33,16 +34,37 @@ public class AddressAdapter extends KJAdapter<AddressInfo> {
     @Override
     public void convert(final AdapterHolder helper, final AddressInfo item, boolean isScrolling, final int position) {
         helper.setText(R.id.tv_name, item.name);
-        RadioButton rb = helper.getView(R.id.rb_check);
+        final RadioButton rb = helper.getView(R.id.rb_check);
         rb.setChecked(item.isChecked);
         rb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(position);
+                listener.onClick(position, rb);
             }
         });
         helper.setText(R.id.mobile, item.mobile);
         helper.setText(R.id.tv_address, item.address);
+        final Button btn_edit = helper.getView(R.id.btn_edit);
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (null != listener) {
+                    listener.onClick(position, btn_edit);
+                }
+            }
+        });
+
+        final Button btn_del = helper.getView(R.id.btn_del);
+        btn_del.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (null != listener) {
+                    listener.onClick(position, btn_del);
+                }
+            }
+        });
     }
 
     @Override
