@@ -3,9 +3,20 @@
     android:id="@+id/shopping_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_bg">
+    android:background="@color/base_bg"
+    android:orientation="vertical">
 
-    <include layout="@layout/list" />
+    <fragment
+        android:id="@+id/fragment_title"
+        android:name="com.ytx.fragment.TitleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <include
+        layout="@layout/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <include
         android:id="@+id/layout_coupons_empty"

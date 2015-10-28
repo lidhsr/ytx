@@ -6,6 +6,12 @@
     android:background="@color/base_bg"
     android:orientation="vertical">
 
+    <fragment
+        android:id="@+id/shopping_title"
+        android:name="com.ytx.fragment.TitleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
     <org.kymjs.kjframe.pulltorefresh.PullToRefreshListView
         android:id="@+id/list"
         android:layout_width="match_parent"

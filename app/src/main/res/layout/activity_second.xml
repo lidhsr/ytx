@@ -5,10 +5,6 @@
     android:background="@color/base_bg"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/titlebar"
-        layout="@layout/main_titlebar" />
-
     <FrameLayout
         android:id="@+id/second_content"
         android:layout_width="match_parent"

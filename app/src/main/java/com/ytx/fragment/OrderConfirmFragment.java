@@ -17,6 +17,7 @@ import com.ytx.data.Shop;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.ui.KJFragment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class OrderConfirmFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
+public class OrderConfirmFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
     @BindView(id = R.id.list)
@@ -35,6 +36,7 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
     private OrderCoinfirmAdapter orderCoinfirmAdapter;
     @BindView(id = R.id.tv_operate,click = true)
     private TextView tv_operate;
+    private TitleFragment titleFragment;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -43,29 +45,6 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
         order_foot = LayoutInflater.from(activity).inflate(R.layout.fragment_order_foot, null);
         order_head.setOnClickListener(this);
         return View.inflate(getActivity(), R.layout.fragment_order_confirm, null);
-    }
-
-    @Override
-    protected void setActionBarRes(ActionBarRes actionBarRes) {
-        super.setActionBarRes(actionBarRes);
-        setTitleBar(actionBarRes);
-        actionBarRes.backImageDrawable = getResources().getDrawable(R.drawable.titlebar_back_bg);
-    }
-
-    @Override
-    public void onChange() {
-        super.onChange();
-        setTitleBar(null);
-    }
-
-    private void setTitleBar(ActionBarRes actionBarRes) {
-        if(null != actionBarRes) {
-            actionBarRes.title = "填写订单";
-            actionBarRes.right_txt = "";
-        } else {
-            setTitle("填写订单");
-            setRightText("");
-        }
     }
 
     @Override
@@ -79,11 +58,11 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
         }
     }
 
-    @Override
-    public void onBackClick() {
-        super.onBackClick();
-        activity.finish();
-    }
+//    @Override
+//    public void onBackClick() {
+//        super.onBackClick();
+//        activity.finish();
+//    }
 
     @Override
     protected void initWidget(View parentView) {
@@ -122,9 +101,13 @@ public class OrderConfirmFragment extends TitleBarFragment implements PullToRefr
         pullToRefreshListView.setAdapter(orderCoinfirmAdapter);
     }
 
+
+
     @Override
     protected void initData() {
         super.initData();
+        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.order_confirm_title);
+        titleFragment.setTitleText("填写订单");
     }
 
     @Override

@@ -13,19 +13,21 @@ import com.ytx.adapter.LogisticsAdapter;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.ui.KJFragment;
 
 import java.util.ArrayList;
 
 /**
  * Created by xiezuoyuan on 15/10/27.
  */
-public class LogisticsFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
+public class LogisticsFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
 
     private SecondActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
     private LogisticsAdapter adapter;
     private ArrayList mData = new ArrayList();
+    private TitleFragment titleFragment;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -34,26 +36,10 @@ public class LogisticsFragment extends TitleBarFragment implements PullToRefresh
     }
 
     @Override
-    protected void setActionBarRes(ActionBarRes actionBarRes) {
-        super.setActionBarRes(actionBarRes);
-        setTitleBar(actionBarRes);
-        actionBarRes.backImageDrawable = getResources().getDrawable(R.drawable.titlebar_back_bg);
-    }
-
-    @Override
-    public void onChange() {
-        super.onChange();
-        setTitleBar(null);
-    }
-
-    private void setTitleBar(ActionBarRes actionBarRes) {
-        if(null != actionBarRes) {
-            actionBarRes.title = "查看物流";
-            actionBarRes.right_txt = "";
-        } else {
-            setTitle("查看物流");
-            setRightText("");
-        }
+    protected void initData() {
+        super.initData();
+        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.fragment_title);
+        titleFragment.setTitleText("查看物流");
     }
 
     @Override

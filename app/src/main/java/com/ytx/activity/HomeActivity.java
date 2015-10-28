@@ -1,7 +1,6 @@
 package com.ytx.activity;
 
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
@@ -13,16 +12,17 @@ import com.ytx.fragment.MyFragment;
 import com.ytx.fragment.SearchFragment;
 import com.ytx.fragment.ShoppingFragment;
 import com.ytx.fragment.SortFragment;
-import com.ytx.fragment.TitleBarFragment;
 
+import org.kymjs.kjframe.KJActivity;
 import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.KJActivityStack;
+import org.kymjs.kjframe.ui.KJFragment;
 
 /**
  * Created by Augustus on 15/10/17.
  */
-public class HomeActivity extends TitleBarActivity {
+public class HomeActivity extends KJActivity {
 
     @BindView(id = R.id.bottombar_group)
     private RadioGroup bottombar_group;
@@ -37,12 +37,13 @@ public class HomeActivity extends TitleBarActivity {
     @BindView(id = R.id.bottombar_content5, click = true)
     private RadioButton mRbtnContent5;
 
-    public TitleBarFragment contentFragment1;
-    private TitleBarFragment contentFragment2;
-    private TitleBarFragment contentFragment3;
-    private TitleBarFragment contentFragment4;
-    private TitleBarFragment contentFragment5;
-    private TitleBarFragment currentFragment;
+
+    public KJFragment contentFragment1;
+    private KJFragment contentFragment2;
+    private KJFragment contentFragment3;
+    private KJFragment contentFragment4;
+    private KJFragment contentFragment5;
+    private KJFragment currentFragment;
 
     private boolean isOnKeyBacking;
     public static int height;
@@ -99,25 +100,7 @@ public class HomeActivity extends TitleBarActivity {
         }
     }
 
-    @Override
-    protected void onBackClick() {
-        super.onBackClick();
-        currentFragment.onBackClick();
-    }
-
-    @Override
-    protected void onMenuClick() {
-        super.onMenuClick();
-        currentFragment.onMenuClick();
-    }
-
-    @Override
-    protected void onRightTextClick() {
-        super.onRightTextClick();
-        currentFragment.onRightTxtClick();
-    }
-
-    public void changeFragment(TitleBarFragment targetFragment) {
+    public void changeFragment(KJFragment targetFragment) {
         if(null != currentFragment && currentFragment.equals(targetFragment)) {
             return;
         }
@@ -126,7 +109,7 @@ public class HomeActivity extends TitleBarActivity {
         super.changeFragment(R.id.main_content, targetFragment);
     }
 
-    private void changeBottomChecked(TitleBarFragment targetFragment) {
+    private void changeBottomChecked(KJFragment targetFragment) {
         if(targetFragment instanceof MainFragment) {
             mRbtnContent1.setChecked(true);
         } else if(targetFragment instanceof SortFragment) {
@@ -146,7 +129,6 @@ public class HomeActivity extends TitleBarActivity {
             if (isOnKeyBacking) {
                 mMainLoopHandler.removeCallbacks(onBackTimeRunnable);
                 isOnKeyBacking = false;
-                // UIHelper.toHome(aty);
                 KJActivityStack.create().AppExit(aty);
             } else {
                 isOnKeyBacking = true;

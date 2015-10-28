@@ -17,6 +17,7 @@ import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.ui.KJFragment;
 import org.kymjs.kjframe.widget.AdapterHolder;
 import org.kymjs.kjframe.widget.KJAdapter;
 
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class CouponsFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
+public class CouponsFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
     @BindView(id = R.id.list)
@@ -36,6 +37,7 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
     private ArrayList<Coupons> mData = new ArrayList<>();
     private ArrayList<Coupons> mDataValid = new ArrayList<>();
     private ArrayList<Coupons> mDataInvalid = new ArrayList<>();
+    private TitleFragment titleFragment;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -44,32 +46,10 @@ public class CouponsFragment extends TitleBarFragment implements PullToRefreshBa
     }
 
     @Override
-    protected void setActionBarRes(ActionBarRes actionBarRes) {
-        super.setActionBarRes(actionBarRes);
-        setTitleBar(actionBarRes);
-        actionBarRes.backImageDrawable = getResources().getDrawable(R.drawable.titlebar_back_bg);
-    }
-
-    @Override
-    public void onChange() {
-        super.onChange();
-        setTitleBar(null);
-    }
-
-    private void setTitleBar(ActionBarRes actionBarRes) {
-        if(null != actionBarRes) {
-            actionBarRes.title = "优惠券";
-            actionBarRes.right_txt = "";
-        } else {
-            setTitle("优惠券");
-            setRightText("");
-        }
-    }
-
-    @Override
-    public void onBackClick() {
-        super.onBackClick();
-        activity.finish();
+    protected void initData() {
+        super.initData();
+        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.fragment_title);
+        titleFragment.setTitleText("优惠券");
     }
 
     @Override

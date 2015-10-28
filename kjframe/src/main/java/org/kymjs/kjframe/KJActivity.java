@@ -20,6 +20,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
@@ -54,6 +55,8 @@ public abstract class KJActivity extends FragmentActivity implements
     protected SupportFragment currentSupportFragment;
     private ThreadDataCallBack callback;
     private KJActivityHandle threadHandle = new KJActivityHandle(this);
+
+    protected final Handler mMainLoopHandler = new Handler(Looper.getMainLooper());
 
     /**
      * Activity状态

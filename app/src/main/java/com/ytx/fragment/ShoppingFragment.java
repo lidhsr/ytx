@@ -27,6 +27,7 @@ import com.ytx.widget.ShoppingEditPopupWindow;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.ui.KJFragment;
 import org.kymjs.kjframe.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class ShoppingFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>,
+public class ShoppingFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>,
         ShoppingEditPopupWindow.PopupClick, SwipeAdapter.PopupClickListener {
 
     private HomeActivity activity;
@@ -70,6 +71,7 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
 
     private boolean isEdit = false;
     private ShoppingEditPopupWindow shoppingEditPopupWindow;
+    private TitleFragment titleFragment;
 
     android.os.Handler handler = new android.os.Handler() {
 
@@ -103,36 +105,16 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
     }
 
     @Override
-    protected void setActionBarRes(ActionBarRes actionBarRes) {
-        super.setActionBarRes(actionBarRes);
-        setTitleBar(actionBarRes);
-    }
-
-    @Override
-    public void onChange() {
-        super.onChange();
-        setTitleBar(null);
-    }
-
-    @Override
     protected void initData() {
         super.initData();
-
+        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.shopping_title);
+        titleFragment.setTitleText(getString(R.string.bottombar_content3));
+        titleFragment.setRightText("编辑");
     }
 
     private void changeBottom() {
         int size = mData.size();
         rl_bottom.setVisibility(size == 0 ? View.GONE : View.VISIBLE);
-    }
-
-    private void setTitleBar(ActionBarRes actionBarRes) {
-        if (null != actionBarRes) {
-            actionBarRes.title = getString(R.string.bottombar_content3);
-            actionBarRes.right_txt = "编辑";
-        } else {
-            setTitle(getString(R.string.bottombar_content3));
-            setRightText(isEdit ? "保存" : "编辑");
-        }
     }
 
     @Override
@@ -163,6 +145,9 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
                 break;
             case R.id.recommend_03:
 
+                break;
+            case R.id.titlebar_right_txt:
+                onRightTextClick();
                 break;
         }
     }
@@ -229,11 +214,9 @@ public class ShoppingFragment extends TitleBarFragment implements PullToRefreshB
         changeBottom();
     }
 
-    @Override
-    public void onRightTxtClick() {
-        super.onRightTxtClick();
+    public void onRightTextClick() {
         isEdit = !isEdit;
-        setRightText(isEdit ? "保存" : "编辑");
+        titleFragment.setRightText(isEdit ? "保存" : "编辑");
 
         if (isEdit) {
             ll_price.setVisibility(View.GONE);

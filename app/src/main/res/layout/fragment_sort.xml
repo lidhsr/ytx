@@ -1,128 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/shopping_root"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_bg">
+    android:background="@color/base_bg"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rl_bottom"
+    <fragment
+        android:id="@+id/sort_title"
+        android:name="com.ytx.fragment.TitleFragment"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_45"
-        android:background="@color/white"
-        android:layout_alignParentBottom="true">
-        <CheckBox
-            android:id="@+id/cbx_all"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dimen_15"
-            android:gravity="center_vertical"
-            android:button="@drawable/cart_cbx"
-            android:checked="false"
-            android:text="全选"
-            android:padding="@dimen/dimen_05"
-            android:textSize="@dimen/dimen_14_sp"
-            android:textColor="@color/text_333"/>
-        <TextView
-            android:id="@+id/tv_operate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/cart_btn_yellow"
-            android:text="结算"
-            android:textSize="@dimen/dimen_16_sp"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:layout_alignParentRight="true"
-            android:paddingLeft="@dimen/dimen_25"
-            android:paddingRight="@dimen/dimen_25"/>
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/tv_move"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/cart_btn_grey"
-            android:text="移入收藏夹"
-            android:textSize="@dimen/dimen_16_sp"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:layout_toLeftOf="@id/tv_operate"
-            android:layout_marginRight="@dimen/dimen_10"
-            android:paddingLeft="@dimen/dimen_25"
-            android:paddingRight="@dimen/dimen_25"/>
-        <LinearLayout
-            android:id="@+id/ll_price"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toLeftOf="@id/tv_operate"
-            android:layout_marginRight="@dimen/dimen_10"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="right"
-                android:gravity="center_vertical|right"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="合计 : "
-                    android:textColor="@color/text_333"
-                    android:textSize="@dimen/dimen_14_sp"/>
-                <TextView
-                    android:id="@+id/tv_total_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¥1,360"
-                    android:textColor="@android:color/holo_red_light"
-                    android:textSize="@dimen/dimen_14_sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="right"
-                android:gravity="center_vertical|right"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/tv_postage_intro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="不含运费"
-                    android:textColor="@color/text_333"
-                    android:textSize="@dimen/dimen_12_sp"/>
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/tv_postage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="¥1,360"
-                    android:textColor="@android:color/holo_red_light"
-                    android:textSize="@dimen/dimen_12_sp"/>
-            </LinearLayout>
+        android:layout_height="45dp" />
 
-        </LinearLayout>
-    </RelativeLayout>
-    <ImageView
-        android:id="@+id/iv_line"
-        android:layout_above="@id/rl_bottom"
+    <include
+        layout="@layout/list"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_0.5"
-        android:background="@color/stroke"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <org.kymjs.kjframe.pulltorefresh.PullToRefreshListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:fadingEdge="none"
-        android:scrollingCache="false"
-        android:cacheColorHint="@color/transparent"
-        android:layout_above="@id/iv_line"
-        android:orientation="vertical">
-
-    </org.kymjs.kjframe.pulltorefresh.PullToRefreshListView>
-
-</RelativeLayout>
+</LinearLayout>

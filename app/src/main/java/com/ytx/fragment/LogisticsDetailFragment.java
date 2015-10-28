@@ -10,13 +10,15 @@ import com.ytx.R;
 import com.ytx.activity.SecondActivity;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
+import org.kymjs.kjframe.ui.KJFragment;
 
 /**
  * Created by xiezuoyuan on 15/10/27.
  */
-public class LogisticsDetailFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
+public class LogisticsDetailFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
 
     private SecondActivity activity;
+    private TitleFragment titleFragment;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -25,26 +27,10 @@ public class LogisticsDetailFragment extends TitleBarFragment implements PullToR
     }
 
     @Override
-    protected void setActionBarRes(ActionBarRes actionBarRes) {
-        super.setActionBarRes(actionBarRes);
-        setTitleBar(actionBarRes);
-        actionBarRes.backImageDrawable = getResources().getDrawable(R.drawable.titlebar_back_bg);
-    }
-
-    @Override
-    public void onChange() {
-        super.onChange();
-        setTitleBar(null);
-    }
-
-    private void setTitleBar(ActionBarRes actionBarRes) {
-        if(null != actionBarRes) {
-            actionBarRes.title = "物流详情";
-            actionBarRes.right_txt = "";
-        } else {
-            setTitle("物流详情");
-            setRightText("");
-        }
+    protected void initData() {
+        super.initData();
+        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.logistics_detail_title);
+        titleFragment.setTitleText("物流详情");
     }
 
     @Override

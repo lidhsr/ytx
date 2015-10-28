@@ -10,11 +10,12 @@ import com.ytx.R;
 import com.ytx.activity.SecondActivity;
 
 import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.ui.KJFragment;
 
 /**
  * Created by xiezuoyuan on 15/10/27.
  */
-public class PayFailFragment extends TitleBarFragment {
+public class PayFailFragment extends KJFragment {
 
     private SecondActivity activity;
 
@@ -22,6 +23,7 @@ public class PayFailFragment extends TitleBarFragment {
     private TextView tv_btn;
     @BindView(id = R.id.tv_reason)
     private TextView tv_reason;
+    private TitleFragment titleFragment;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -30,33 +32,17 @@ public class PayFailFragment extends TitleBarFragment {
     }
 
     @Override
-    protected void setActionBarRes(ActionBarRes actionBarRes) {
-        super.setActionBarRes(actionBarRes);
-        setTitleBar(actionBarRes);
-        actionBarRes.backImageDrawable = getResources().getDrawable(R.drawable.titlebar_back_bg);
+    protected void initData() {
+        super.initData();
+        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.pay_fail_title);
+        titleFragment.setTitleText("支付结果");
     }
 
-    @Override
-    public void onChange() {
-        super.onChange();
-        setTitleBar(null);
-    }
-
-    private void setTitleBar(ActionBarRes actionBarRes) {
-        if(null != actionBarRes) {
-            actionBarRes.title = "支付宝支付";
-            actionBarRes.right_txt = "";
-        } else {
-            setTitle("支付宝支付");
-            setRightText("");
-        }
-    }
-
-    @Override
-    public void onBackClick() {
-        super.onBackClick();
-        activity.finish();
-    }
+//    @Override
+//    public void onBackClick() {
+//        super.onBackClick();
+//        activity.finish();
+//    }
 
     @Override
     protected void widgetClick(View v) {

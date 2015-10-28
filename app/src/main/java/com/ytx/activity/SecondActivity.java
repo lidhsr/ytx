@@ -8,16 +8,17 @@ import com.ytx.app.FragmentType;
 import com.ytx.fragment.CouponsFragment;
 import com.ytx.fragment.OrderConfirmFragment;
 import com.ytx.fragment.PayFragment;
-import com.ytx.fragment.TitleBarFragment;
+
+import org.kymjs.kjframe.KJActivity;
+import org.kymjs.kjframe.ui.KJFragment;
 
 /**
  * Created by Augustus on 15/10/17.
  */
-public class SecondActivity extends TitleBarActivity {
+public class SecondActivity extends KJActivity {
 
     private int fragmentTyep;
-    private TitleBarFragment currentFragment;
-    private TitleBarFragment fragment;
+    private KJFragment fragment;
 
     @Override
     public void setRootView() {
@@ -47,33 +48,33 @@ public class SecondActivity extends TitleBarActivity {
         changeFragment(fragment);
     }
 
-    public void changeFragment(TitleBarFragment targetFragment) {
-        currentFragment = targetFragment;
+    public void changeFragment(KJFragment targetFragment) {
+//        currentFragment = targetFragment;
         super.changeFragment(R.id.second_content, targetFragment);
     }
 
-    public void changeFragment(TitleBarFragment targetFragment, boolean isBack) {
-        currentFragment = targetFragment;
+    public void changeFragment(KJFragment targetFragment, boolean isBack) {
+//        currentFragment = targetFragment;
         super.changeFragment(R.id.second_content, targetFragment, isBack);
     }
 
-    @Override
-    protected void onBackClick() {
-        super.onBackClick();
-        FragmentManager fragmentManager = getFragmentManager();
-        int count = fragmentManager.getBackStackEntryCount();
-        if(count > 0) {
-            fragmentManager.popBackStack();
-            return;
-        }
-        this.finish();
-    }
-
-    @Override
-    protected void onRightTextClick() {
-        super.onRightTextClick();
-        currentFragment.onRightTxtClick();
-    }
+//    @Override
+//    protected void onBackClick() {
+//        super.onBackClick();
+//        FragmentManager fragmentManager = getFragmentManager();
+//        int count = fragmentManager.getBackStackEntryCount();
+//        if(count > 0) {
+//            fragmentManager.popBackStack();
+//            return;
+//        }
+//        this.finish();
+//    }
+//
+//    @Override
+//    protected void onRightTextClick() {
+//        super.onRightTextClick();
+//        currentFragment.onRightTxtClick();
+//    }
 
     @Override
     public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {

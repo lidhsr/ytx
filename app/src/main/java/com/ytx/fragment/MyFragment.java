@@ -12,15 +12,17 @@ import com.ytx.activity.HomeActivity;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.ui.KJFragment;
 
 /**
  * Created by Augustus on 15/10/18.
  */
-public class MyFragment extends TitleBarFragment implements PullToRefreshBase.OnRefreshListener<ListView> {
+public class MyFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView> {
 
     private HomeActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
+    private TitleFragment titleFragment;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -29,26 +31,10 @@ public class MyFragment extends TitleBarFragment implements PullToRefreshBase.On
     }
 
     @Override
-    protected void setActionBarRes(ActionBarRes actionBarRes) {
-        super.setActionBarRes(actionBarRes);
-        setTitleBar(actionBarRes);
-    }
-
-    @Override
-    public void onChange() {
-        super.onChange();
-        setTitleBar(null);
-    }
-
-    private void setTitleBar(ActionBarRes actionBarRes) {
-        if(null != actionBarRes) {
-            actionBarRes.title = getString(R.string.bottombar_content5);
-            actionBarRes.right_txt = "";
-        } else {
-            setTitle(getString(R.string.bottombar_content5));
-            setRightText("");
-        }
-
+    protected void initData() {
+        super.initData();
+        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.my_title);
+        titleFragment.setTitleText(getString(R.string.bottombar_content5));
     }
 
     @Override

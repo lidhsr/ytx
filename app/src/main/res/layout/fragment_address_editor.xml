@@ -6,6 +6,12 @@
     android:background="@color/base_bg"
     android:orientation="vertical">
 
+    <fragment
+        android:id="@+id/address_editor_title"
+        android:name="com.ytx.fragment.TitleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
