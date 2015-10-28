@@ -14,7 +14,7 @@ public class BaseApplication extends MyApplication {
         super.onCreate();
         BitmapConfig.CACHEPATH = AppConfig.imgCachePath;
         HttpConfig.CACHEPATH = AppConfig.httpCachePath;
-        CrashHandler.create(this);
+        //CrashHandler.create(this);
 
     }
 
