@@ -13,22 +13,20 @@ import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 import java.io.Serializable;
 
 /**
  * Created by Augustus on 15/10/18.
  */
-public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
+public class PayFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
     @BindView(id = R.id.button1, click = true)
     private Button button1;
     @BindView(id = R.id.button2, click = true)
     private Button button2;
-    @BindView(id = R.id.button3, click = true)
-    private Button button3;
     @BindView(id = R.id.pay_title)
     private TitleView pay_title;
 
@@ -47,9 +45,6 @@ public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefre
                 break;
             case R.id.button2:
                 activity.changeFragment(new PayFailFragment(),true);
-                break;
-            case R.id.button3:
-                activity.changeFragment(new OrderDetailFragment(),true);
                 break;
             case R.id.titlebar_img_back:
                 getFragmentManager().popBackStack();

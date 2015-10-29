@@ -10,7 +10,7 @@ import com.ytx.fragment.OrderConfirmFragment;
 import com.ytx.fragment.PayFragment;
 
 import org.kymjs.kjframe.KJActivity;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
  * Created by Augustus on 15/10/17.
@@ -18,7 +18,7 @@ import org.kymjs.kjframe.ui.KJFragment;
 public class SecondActivity extends KJActivity {
 
     private int fragmentTyep;
-    private KJFragment fragment;
+    private SupportFragment fragment;
 
     @Override
     public void setRootView() {
@@ -48,33 +48,13 @@ public class SecondActivity extends KJActivity {
         changeFragment(fragment);
     }
 
-    public void changeFragment(KJFragment targetFragment) {
-//        currentFragment = targetFragment;
+    public void changeFragment(SupportFragment targetFragment) {
         super.changeFragment(R.id.second_content, targetFragment);
     }
 
-    public void changeFragment(KJFragment targetFragment, boolean isBack) {
-//        currentFragment = targetFragment;
+    public void changeFragment(SupportFragment targetFragment, boolean isBack) {
         super.changeFragment(R.id.second_content, targetFragment, isBack);
     }
-
-//    @Override
-//    protected void onBackClick() {
-//        super.onBackClick();
-//        FragmentManager fragmentManager = getFragmentManager();
-//        int count = fragmentManager.getBackStackEntryCount();
-//        if(count > 0) {
-//            fragmentManager.popBackStack();
-//            return;
-//        }
-//        this.finish();
-//    }
-//
-//    @Override
-//    protected void onRightTextClick() {
-//        super.onRightTextClick();
-//        currentFragment.onRightTxtClick();
-//    }
 
     @Override
     public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {

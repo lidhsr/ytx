@@ -4,31 +4,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
-import com.ytx.adapter.CartAdapter;
-import com.ytx.data.Product;
-import com.ytx.data.Shop;
 import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase.OnRefreshListener;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
-import org.kymjs.kjframe.utils.StringUtils;
-
-import java.util.ArrayList;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
  * Created by Augustus on 15/10/18.
  */
-public class SortFragment extends KJFragment implements OnRefreshListener<ListView>{
+public class SortFragment extends SupportFragment implements OnRefreshListener<ListView>{
 
     private HomeActivity activity;
     @BindView(id = R.id.list)

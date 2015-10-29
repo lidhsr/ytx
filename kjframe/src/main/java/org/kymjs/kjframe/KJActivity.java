@@ -338,11 +338,11 @@ public abstract class KJActivity extends FragmentActivity implements
      * @param targetFragment 用来替换的Fragment
      * @param isBack  处理是否添加到回退池，true为添加
      */
-    public void changeFragment(int resView, KJFragment targetFragment, boolean isBack) {
-        if (targetFragment.equals(currentKJFragment)) {
+    public void changeFragment(int resView, SupportFragment targetFragment, boolean isBack) {
+        if (targetFragment.equals(currentSupportFragment)) {
             return;
         }
-        FragmentTransaction transaction = getFragmentManager()
+        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction();
         if (!targetFragment.isAdded()) {
             transaction.add(resView, targetFragment, targetFragment.getClass()
@@ -352,13 +352,13 @@ public abstract class KJActivity extends FragmentActivity implements
             transaction.show(targetFragment);
             targetFragment.onChange();
         }
-        if (currentKJFragment != null && currentKJFragment.isVisible()) {
-            transaction.hide(currentKJFragment);
+        if (currentSupportFragment != null && currentSupportFragment.isVisible()) {
+            transaction.hide(currentSupportFragment);
         }
         if(isBack) {
             transaction.addToBackStack(null);
         }
-        currentKJFragment = targetFragment;
+        currentSupportFragment = targetFragment;
         transaction.commit();
     }
 }

@@ -12,12 +12,12 @@ import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
  * Created by xiezuoyuan on 15/10/27.
  */
-public class LogisticsDetailFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
+public class LogisticsDetailFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
 
     private SecondActivity activity;
     @BindView(id = R.id.logistics_detail_title)

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -21,7 +20,7 @@ import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class AddressFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable, OnClickListener {
+public class AddressFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable, OnClickListener {
 
     private SecondActivity activity;
     @BindView(id = R.id.list)
