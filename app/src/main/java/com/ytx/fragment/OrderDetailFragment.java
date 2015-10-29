@@ -46,8 +46,13 @@ public class OrderDetailFragment extends KJFragment implements PullToRefreshBase
     @Override
     protected void widgetClick(View v) {
         super.widgetClick(v);
-        if(v.getId() == R.id.titlebar_img_back) {
-            activity.finish();
+        switch (v.getId()) {
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                break;
+            case R.id.btn_check:
+                activity.changeFragment(new LogisticsFragment(),true);
+                break;
         }
     }
 
