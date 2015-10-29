@@ -1,16 +1,11 @@
 package com.ytx.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
@@ -26,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class MyFragment extends KJFragment {
+public class MyFragment extends KJFragment implements ViewPager.OnPageChangeListener {
 
     private HomeActivity activity;
     @BindView(id = R.id.my_title)
@@ -66,5 +61,20 @@ public class MyFragment extends KJFragment {
         pager_tab.setShouldExpand(true);
         pager_tab.setViewPager(pager);
         pager_tab.setIndicatorHeight(4);
+        pager_tab.addOnPageChangeListener(this);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }
