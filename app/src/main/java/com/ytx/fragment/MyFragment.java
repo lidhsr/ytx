@@ -63,6 +63,8 @@ public class MyFragment extends KJFragment {
         pager.setAdapter(adapter);
         int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
         pager.setPageMargin(pageMargin);
+        pager_tab.setShouldExpand(true);
         pager_tab.setViewPager(pager);
+        pager_tab.setIndicatorHeight(4);
     }
 }
