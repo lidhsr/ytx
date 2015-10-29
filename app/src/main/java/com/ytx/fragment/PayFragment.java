@@ -27,6 +27,8 @@ public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefre
     private Button button1;
     @BindView(id = R.id.button2, click = true)
     private Button button2;
+    @BindView(id = R.id.button3, click = true)
+    private Button button3;
     @BindView(id = R.id.pay_title)
     private TitleView pay_title;
 
@@ -45,6 +47,9 @@ public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefre
                 break;
             case R.id.button2:
                 activity.changeFragment(new PayFailFragment(),true);
+                break;
+            case R.id.button3:
+                activity.changeFragment(new OrderDetailFragment(),true);
                 break;
             case R.id.titlebar_img_back:
                 getFragmentManager().popBackStack();
