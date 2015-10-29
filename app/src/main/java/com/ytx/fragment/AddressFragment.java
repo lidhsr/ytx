@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -14,6 +15,7 @@ import com.ytx.adapter.AddressAdapter;
 import com.ytx.data.AddressInfo;
 import com.ytx.listener.OnClickListener;
 import com.ytx.widget.DialogTools;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -37,7 +39,8 @@ public class AddressFragment extends KJFragment implements PullToRefreshBase.OnR
     private AddressAdapter adapter;
     private ArrayList<AddressInfo> data = new ArrayList<>();
     private AlertDialog dialog;
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.address_select_title)
+    private TitleView address_select_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -56,6 +59,10 @@ public class AddressFragment extends KJFragment implements PullToRefreshBase.OnR
                 addressEditorFragment.setArguments(bundle);
                 activity.changeFragment(addressEditorFragment, true);
                 break;
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                getFragmentManager().beginTransaction().remove(this).commit();
+                break;
         }
     }
 
@@ -71,8 +78,9 @@ public class AddressFragment extends KJFragment implements PullToRefreshBase.OnR
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.address_slect_title);
-        titleFragment.setTitleText("收货地址选择");
+        address_select_title.setTitleText("收货地址选择");
+        address_select_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        address_select_title.setLeftClick(this);
 
         AddressInfo info = new AddressInfo();
         info.name = "Name";

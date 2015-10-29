@@ -4,9 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment
+    <com.ytx.widget.TitleView
         android:id="@+id/order_confirm_title"
-        android:name="com.ytx.fragment.TitleFragment"
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 

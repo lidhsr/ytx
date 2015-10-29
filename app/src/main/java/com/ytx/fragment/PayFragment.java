@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.ytx.R;
 import com.ytx.activity.SecondActivity;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.ui.BindView;
@@ -26,7 +27,8 @@ public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefre
     private Button button1;
     @BindView(id = R.id.button2, click = true)
     private Button button2;
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.pay_title)
+    private TitleView pay_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -44,20 +46,11 @@ public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefre
             case R.id.button2:
                 activity.changeFragment(new PayFailFragment(),true);
                 break;
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                break;
         }
     }
-
-//    @Override
-//    public void onBackClick() {
-//        super.onBackClick();
-//        FragmentManager fragmentManager = getFragmentManager();
-//        int count = fragmentManager.getBackStackEntryCount();
-//        if(count > 0) {
-//            fragmentManager.popBackStack();
-//            return;
-//        }
-//        activity.finish();
-//    }
 
     @Override
     protected void initWidget(View parentView) {
@@ -67,8 +60,10 @@ public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefre
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.pay_title);
-        titleFragment.setTitleText("支付结果");
+        pay_title.setTitleText("支付结果");
+        pay_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        pay_title.setLeftClick(this);
+
     }
 
     @Override

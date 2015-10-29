@@ -8,8 +8,10 @@ import android.widget.ListView;
 
 import com.ytx.R;
 import com.ytx.activity.SecondActivity;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
+import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.KJFragment;
 
 /**
@@ -18,19 +20,32 @@ import org.kymjs.kjframe.ui.KJFragment;
 public class LogisticsDetailFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
 
     private SecondActivity activity;
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.logistics_detail_title)
+    private TitleView logistics_detail_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         activity = (SecondActivity) getActivity();
-        return View.inflate(getActivity(), R.layout.fragment_logistics_detail, null);
+        return View.inflate(activity, R.layout.fragment_logistics_detail, null);
     }
 
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.logistics_detail_title);
-        titleFragment.setTitleText("物流详情");
+        logistics_detail_title.setTitleText("物流详情");
+        logistics_detail_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        logistics_detail_title.setLeftClick(this);
+
+    }
+
+    @Override
+    protected void widgetClick(View v) {
+        super.widgetClick(v);
+        switch (v.getId()) {
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                break;
+        }
     }
 
     @Override

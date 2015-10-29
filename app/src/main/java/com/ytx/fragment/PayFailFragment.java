@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.ytx.R;
 import com.ytx.activity.SecondActivity;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.KJFragment;
@@ -23,7 +24,8 @@ public class PayFailFragment extends KJFragment {
     private TextView tv_btn;
     @BindView(id = R.id.tv_reason)
     private TextView tv_reason;
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.pay_fail_title)
+    private TitleView pay_fail_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -34,18 +36,20 @@ public class PayFailFragment extends KJFragment {
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.pay_fail_title);
-        titleFragment.setTitleText("支付结果");
-    }
+        pay_fail_title.setTitleText("支付结果");
+        pay_fail_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        pay_fail_title.setLeftClick(this);
 
-//    @Override
-//    public void onBackClick() {
-//        super.onBackClick();
-//        activity.finish();
-//    }
+    }
 
     @Override
     protected void widgetClick(View v) {
         super.widgetClick(v);
+        switch (v.getId()) {
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                break;
+        }
     }
+
 }

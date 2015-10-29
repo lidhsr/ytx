@@ -6,9 +6,8 @@
     android:background="@color/base_bg"
     android:orientation="vertical">
 
-    <fragment
-        android:id="@+id/fragment_title"
-        android:name="com.ytx.fragment.TitleFragment"
+    <com.ytx.widget.TitleView
+        android:id="@+id/coupons_title"
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 

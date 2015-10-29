@@ -13,6 +13,7 @@ import com.ytx.adapter.OrderCoinfirmAdapter;
 import com.ytx.data.ActivityInfo;
 import com.ytx.data.Product;
 import com.ytx.data.Shop;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -36,7 +37,8 @@ public class OrderConfirmFragment extends KJFragment implements PullToRefreshBas
     private OrderCoinfirmAdapter orderCoinfirmAdapter;
     @BindView(id = R.id.tv_operate,click = true)
     private TextView tv_operate;
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.order_confirm_title)
+    private TitleView order_confirm_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -44,7 +46,7 @@ public class OrderConfirmFragment extends KJFragment implements PullToRefreshBas
         order_head = LayoutInflater.from(activity).inflate(R.layout.fragment_order_head, null);
         order_foot = LayoutInflater.from(activity).inflate(R.layout.fragment_order_foot, null);
         order_head.setOnClickListener(this);
-        return View.inflate(getActivity(), R.layout.fragment_order_confirm, null);
+        return View.inflate(activity, R.layout.fragment_order_confirm, null);
     }
 
     @Override
@@ -56,13 +58,10 @@ public class OrderConfirmFragment extends KJFragment implements PullToRefreshBas
         if (v == tv_operate){
             activity.changeFragment(new PayFragment(), true);
         }
+        if(v.getId() == R.id.titlebar_img_back) {
+            activity.finish();
+        }
     }
-
-//    @Override
-//    public void onBackClick() {
-//        super.onBackClick();
-//        activity.finish();
-//    }
 
     @Override
     protected void initWidget(View parentView) {
@@ -101,13 +100,13 @@ public class OrderConfirmFragment extends KJFragment implements PullToRefreshBas
         pullToRefreshListView.setAdapter(orderCoinfirmAdapter);
     }
 
-
-
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.order_confirm_title);
-        titleFragment.setTitleText("填写订单");
+        order_confirm_title.setTitleText("填写订单");
+        order_confirm_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        order_confirm_title.setLeftClick(this);
+
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.ytx.R;
 import com.ytx.activity.SecondActivity;
 import com.ytx.data.Coupons;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -37,7 +38,8 @@ public class CouponsFragment extends KJFragment implements PullToRefreshBase.OnR
     private ArrayList<Coupons> mData = new ArrayList<>();
     private ArrayList<Coupons> mDataValid = new ArrayList<>();
     private ArrayList<Coupons> mDataInvalid = new ArrayList<>();
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.coupons_title)
+    private TitleView coupons_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -48,8 +50,20 @@ public class CouponsFragment extends KJFragment implements PullToRefreshBase.OnR
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.fragment_title);
-        titleFragment.setTitleText("优惠券");
+        coupons_title.setTitleText("优惠券");
+        coupons_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        coupons_title.setLeftClick(this);
+
+    }
+
+    @Override
+    protected void widgetClick(View v) {
+        super.widgetClick(v);
+        switch (v.getId()) {
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                break;
+        }
     }
 
     @Override

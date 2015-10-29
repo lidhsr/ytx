@@ -14,6 +14,7 @@ import com.ytx.activity.HomeActivity;
 import com.ytx.adapter.CartAdapter;
 import com.ytx.data.Product;
 import com.ytx.data.Shop;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase.OnRefreshListener;
@@ -32,7 +33,8 @@ public class SortFragment extends KJFragment implements OnRefreshListener<ListVi
     private HomeActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.sort_title)
+    private TitleView sort_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -43,8 +45,7 @@ public class SortFragment extends KJFragment implements OnRefreshListener<ListVi
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.sort_title);
-        titleFragment.setTitleText(getString(R.string.bottombar_content2));
+        sort_title.setTitleText(getString(R.string.bottombar_content2));
     }
 
     @Override

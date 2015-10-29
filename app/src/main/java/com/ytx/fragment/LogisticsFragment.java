@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.ytx.R;
 import com.ytx.activity.SecondActivity;
 import com.ytx.adapter.LogisticsAdapter;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -27,7 +28,8 @@ public class LogisticsFragment extends KJFragment implements PullToRefreshBase.O
     private PullToRefreshListView pullToRefreshListView;
     private LogisticsAdapter adapter;
     private ArrayList mData = new ArrayList();
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.fragment_title)
+    private TitleView fragment_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -38,8 +40,20 @@ public class LogisticsFragment extends KJFragment implements PullToRefreshBase.O
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.fragment_title);
-        titleFragment.setTitleText("查看物流");
+        fragment_title.setTitleText("查看物流");
+        fragment_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        fragment_title.setLeftClick(this);
+
+    }
+
+    @Override
+    protected void widgetClick(View v) {
+        super.widgetClick(v);
+        switch (v.getId()) {
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                break;
+        }
     }
 
     @Override

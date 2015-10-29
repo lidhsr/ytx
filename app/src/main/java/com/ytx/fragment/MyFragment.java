@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -22,7 +23,8 @@ public class MyFragment extends KJFragment implements PullToRefreshBase.OnRefres
     private HomeActivity activity;
     @BindView(id = R.id.list)
     private PullToRefreshListView pullToRefreshListView;
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.my_title)
+    private TitleView my_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -33,8 +35,7 @@ public class MyFragment extends KJFragment implements PullToRefreshBase.OnRefres
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.my_title);
-        titleFragment.setTitleText(getString(R.string.bottombar_content5));
+        my_title.setTitleText(getString(R.string.bottombar_content5));
     }
 
     @Override

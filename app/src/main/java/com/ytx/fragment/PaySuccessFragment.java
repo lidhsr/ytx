@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.ytx.R;
 import com.ytx.activity.SecondActivity;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.KJFragment;
@@ -27,7 +28,8 @@ public class PaySuccessFragment extends KJFragment {
     private TextView tv_pay_money;//支付金额
     @BindView(id = R.id.tv_order_number)
     private TextView tv_order_number;//订单号
-    private TitleFragment titleFragment;
+    @BindView(id = R.id.pay_success_title)
+    private TitleView pay_success_title;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -35,21 +37,22 @@ public class PaySuccessFragment extends KJFragment {
         return View.inflate(getActivity(), R.layout.fragment_pay_success, null);
     }
 
-//    @Override
-//    public void onBackClick() {
-//        super.onBackClick();
-//        activity.finish();
-//    }
-
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.pay_success_title);
-        titleFragment.setTitleText("支付结果");
+        pay_success_title.setTitleText("支付结果");
+        pay_success_title.setLeftImage(getResources().getDrawable(R.drawable.titlebar_back_bg));
+        pay_success_title.setLeftClick(this);
+
     }
 
     @Override
     protected void widgetClick(View v) {
         super.widgetClick(v);
+        switch(v.getId()) {
+            case R.id.titlebar_img_back:
+                getFragmentManager().popBackStack();
+                break;
+        }
     }
 }

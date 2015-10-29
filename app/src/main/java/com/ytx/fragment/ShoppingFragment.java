@@ -23,6 +23,7 @@ import com.ytx.data.ActivityInfo;
 import com.ytx.data.Product;
 import com.ytx.data.Shop;
 import com.ytx.widget.ShoppingEditPopupWindow;
+import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
@@ -68,10 +69,11 @@ public class ShoppingFragment extends KJFragment implements PullToRefreshBase.On
     private TextView tv_total_price;
     @BindView(id = R.id.rl_bottom)
     private RelativeLayout rl_bottom;
+    @BindView(id = R.id.shopping_title)
+    private TitleView shopping_title;
 
     private boolean isEdit = false;
     private ShoppingEditPopupWindow shoppingEditPopupWindow;
-    private TitleFragment titleFragment;
 
     android.os.Handler handler = new android.os.Handler() {
 
@@ -107,9 +109,9 @@ public class ShoppingFragment extends KJFragment implements PullToRefreshBase.On
     @Override
     protected void initData() {
         super.initData();
-        titleFragment = (TitleFragment) getFragmentManager().findFragmentById(R.id.shopping_title);
-        titleFragment.setTitleText(getString(R.string.bottombar_content3));
-        titleFragment.setRightText("编辑");
+        shopping_title.setTitleText(getString(R.string.bottombar_content3));
+        shopping_title.setRightText("编辑");
+        shopping_title.setRightTextClick(this);
     }
 
     private void changeBottom() {
@@ -216,7 +218,7 @@ public class ShoppingFragment extends KJFragment implements PullToRefreshBase.On
 
     public void onRightTextClick() {
         isEdit = !isEdit;
-        titleFragment.setRightText(isEdit ? "保存" : "编辑");
+        shopping_title.setRightText(isEdit ? "保存" : "编辑");
 
         if (isEdit) {
             ll_price.setVisibility(View.GONE);
