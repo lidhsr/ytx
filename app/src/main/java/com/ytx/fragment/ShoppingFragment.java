@@ -28,7 +28,8 @@ import com.ytx.widget.TitleView;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.SupportFragment;
+import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.utils.DensityUtils;
 import org.kymjs.kjframe.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class ShoppingFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>,
+public class ShoppingFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>,
         ShoppingEditPopupWindow.PopupClick, SwipeAdapter.PopupClickListener {
 
     private HomeActivity activity;
@@ -157,7 +158,7 @@ public class ShoppingFragment extends SupportFragment implements PullToRefreshBa
     @Override
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
-        btn_go.setWidth(HomeActivity.screenW / 2);
+        btn_go.setWidth(DensityUtils.getScreenW(activity) / 2);
 
         for (int i = 0; i < 3; i++) {
             Shop shop = new Shop();

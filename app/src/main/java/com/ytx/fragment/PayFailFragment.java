@@ -11,12 +11,12 @@ import com.ytx.activity.SecondActivity;
 import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.SupportFragment;
+import org.kymjs.kjframe.ui.KJFragment;
 
 /**
  * Created by xiezuoyuan on 15/10/27.
  */
-public class PayFailFragment extends SupportFragment {
+public class PayFailFragment extends KJFragment {
 
     private SecondActivity activity;
 

@@ -13,14 +13,14 @@ import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.SupportFragment;
+import org.kymjs.kjframe.ui.KJFragment;
 
 import java.io.Serializable;
 
 /**
  * Created by Augustus on 15/10/18.
  */
-public class PayFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
+public class PayFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
     @BindView(id = R.id.button1, click = true)

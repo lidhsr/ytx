@@ -18,7 +18,7 @@ import com.ytx.widget.TitleView;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.SupportFragment;
+import org.kymjs.kjframe.ui.KJFragment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class OrderConfirmFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
+public class OrderConfirmFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
     @BindView(id = R.id.list)

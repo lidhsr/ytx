@@ -12,6 +12,8 @@ import android.widget.ListView;
 
 import com.ytx.activity.HomeActivity;
 
+import org.kymjs.kjframe.utils.DensityUtils;
+
 public class SwipeListView extends ListView {
     private Boolean mIsHorizontal;
 
@@ -23,7 +25,7 @@ public class SwipeListView extends ListView {
 
     private float mFirstY;
 
-    private int mRightViewWidth = HomeActivity.screenW / 5;
+    private int mRightViewWidth;
 
     // private boolean mIsInAnimation = false;
     private final int mDuration = 100;
@@ -41,14 +43,17 @@ public class SwipeListView extends ListView {
 
     public SwipeListView(Context context) {
         super(context);
+        mRightViewWidth = DensityUtils.getScreenW(context) / 5;
     }
 
     public SwipeListView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mRightViewWidth = DensityUtils.getScreenW(context) / 5;
     }
 
     public SwipeListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        mRightViewWidth = DensityUtils.getScreenW(context) / 5;
     }
 
     /**

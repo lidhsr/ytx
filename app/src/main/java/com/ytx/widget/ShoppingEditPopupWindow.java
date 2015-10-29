@@ -19,6 +19,8 @@ import android.widget.TextView;
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
 
+import org.kymjs.kjframe.utils.DensityUtils;
+
 import java.util.ArrayList;
 
 /**
@@ -120,7 +122,7 @@ public class ShoppingEditPopupWindow extends PopupWindow {
                 TextView textView = (TextView) v.findViewById(R.id.txt);
                 textView.setText(list.get(position));
                 textView.setOnClickListener(new SizeTextClick(position));
-                TableRow.LayoutParams p = new TableRow.LayoutParams(HomeActivity.screenW / 4 - 20, ViewPager.LayoutParams.WRAP_CONTENT);
+                TableRow.LayoutParams p = new TableRow.LayoutParams(DensityUtils.getScreenW(activity) / 4 - 20, ViewPager.LayoutParams.WRAP_CONTENT);
                 row.addView(v, p);
                 ++position;
                 sizeTextList.add(textView);
@@ -159,7 +161,7 @@ public class ShoppingEditPopupWindow extends PopupWindow {
                 TextView textView = (TextView) v.findViewById(R.id.txt);
                 textView.setText(list.get(position));
                 textView.setOnClickListener(new ColorTextClick(position));
-                TableRow.LayoutParams p = new TableRow.LayoutParams(HomeActivity.screenW / 4 - 20, ViewPager.LayoutParams.WRAP_CONTENT);
+                TableRow.LayoutParams p = new TableRow.LayoutParams(DensityUtils.getScreenW(activity) / 4 - 20, ViewPager.LayoutParams.WRAP_CONTENT);
                 row.addView(v, p);
                 ++position;
                 colorTextList.add(textView);

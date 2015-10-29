@@ -20,7 +20,7 @@ import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.SupportFragment;
+import org.kymjs.kjframe.ui.KJFragment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class AddressFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable, OnClickListener {
+public class AddressFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable, OnClickListener {
 
     private SecondActivity activity;
     @BindView(id = R.id.list)

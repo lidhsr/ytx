@@ -10,6 +10,7 @@ import com.ytx.fragment.OrderConfirmFragment;
 import com.ytx.fragment.PayFragment;
 
 import org.kymjs.kjframe.KJActivity;
+import org.kymjs.kjframe.ui.KJFragment;
 import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
@@ -18,7 +19,7 @@ import org.kymjs.kjframe.ui.SupportFragment;
 public class SecondActivity extends KJActivity {
 
     private int fragmentTyep;
-    private SupportFragment fragment;
+    private KJFragment fragment;
 
     @Override
     public void setRootView() {
@@ -48,11 +49,11 @@ public class SecondActivity extends KJActivity {
         changeFragment(fragment);
     }
 
-    public void changeFragment(SupportFragment targetFragment) {
+    public void changeFragment(KJFragment targetFragment) {
         super.changeFragment(R.id.second_content, targetFragment);
     }
 
-    public void changeFragment(SupportFragment targetFragment, boolean isBack) {
+    public void changeFragment(KJFragment targetFragment, boolean isBack) {
         super.changeFragment(R.id.second_content, targetFragment, isBack);
     }
 

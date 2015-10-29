@@ -1,6 +1,5 @@
 package com.ytx.activity;
 
-import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
@@ -18,7 +17,6 @@ import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.KJActivityStack;
 import org.kymjs.kjframe.ui.KJFragment;
-import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
  * Created by Augustus on 15/10/17.
@@ -39,27 +37,19 @@ public class HomeActivity extends KJActivity {
     private RadioButton mRbtnContent5;
 
 
-    public SupportFragment contentFragment1;
-    private SupportFragment contentFragment2;
-    private SupportFragment contentFragment3;
-    private SupportFragment contentFragment4;
-    private SupportFragment contentFragment5;
-    private SupportFragment currentFragment;
+    public KJFragment contentFragment1;
+    private KJFragment contentFragment2;
+    private KJFragment contentFragment3;
+    private KJFragment contentFragment4;
+    private KJFragment contentFragment5;
+    private KJFragment currentFragment;
 
     private boolean isOnKeyBacking;
     public static int height;
 
-    public static int screenW;
-    public static int screenH;
-
     @Override
     public void setRootView() {
         setContentView(R.layout.activity_home);
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        screenW = dm.widthPixels;// 获取屏幕分辨率宽度
-        screenH = dm.heightPixels;
     }
 
     @Override
@@ -101,16 +91,16 @@ public class HomeActivity extends KJActivity {
         }
     }
 
-    public void changeFragment(SupportFragment targetFragment) {
+    public void changeFragment(KJFragment targetFragment) {
         if(null != currentFragment && currentFragment.equals(targetFragment)) {
             return;
         }
         currentFragment = targetFragment;
         changeBottomChecked(targetFragment);
-        super.changeFragment(R.id.main_content, targetFragment);
+        super.changeFragment(R.id.main_content, targetFragment, false);
     }
 
-    private void changeBottomChecked(SupportFragment targetFragment) {
+    private void changeBottomChecked(KJFragment targetFragment) {
         if(targetFragment instanceof MainFragment) {
             mRbtnContent1.setChecked(true);
         } else if(targetFragment instanceof SortFragment) {
@@ -141,7 +131,6 @@ public class HomeActivity extends KJActivity {
             return super.onKeyDown(keyCode, event);
         }
     }
-
 
     private final Runnable onBackTimeRunnable = new Runnable() {
         @Override

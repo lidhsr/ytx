@@ -13,12 +13,12 @@ import com.ytx.widget.TitleView;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.SupportFragment;
+import org.kymjs.kjframe.ui.KJFragment;
 
 /**
  * Created by Augustus on 15/10/18.
  */
-public class SearchFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView> {
+public class SearchFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView> {
 
     private HomeActivity activity;
     @BindView(id = R.id.list)
