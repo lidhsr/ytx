@@ -6,16 +6,12 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.ytx.R;
 import com.ytx.activity.HomeActivity;
-import com.ytx.adapter.MyOrderAdapter;
 import com.ytx.adapter.MyPagerAdapter;
 import com.ytx.widget.TitleView;
 
-import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
-import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.SupportFragment;
 import org.kymjs.kjframe.widget.PagerSlidingTabStrip;
@@ -48,7 +44,7 @@ public class MyFragment extends SupportFragment implements ViewPager.OnPageChang
         super.initData();
         my_title.setTitleText(getString(R.string.bottombar_content5));
         mListViews = new ArrayList<>();
-        mListViews.add(new EmptyFragment());
+        mListViews.add(new MyOrder0Fragment());
         mListViews.add(new EmptyFragment());
         mListViews.add(new EmptyFragment());
         mListViews.add(new EmptyFragment());
@@ -82,23 +78,4 @@ public class MyFragment extends SupportFragment implements ViewPager.OnPageChang
 
     }
 
-    private View getInflateView(){
-        View view = View.inflate(getActivity(), R.layout.fragment_empty, null);
-        PullToRefreshListView pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.list);
-        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>(){
-            @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-
-            }
-        });
-        ListView listView = pullToRefreshListView.getRefreshableView();
-        ArrayList<Object> mData = new ArrayList<>();
-        mData.add(new Object());
-        mData.add(new Object());
-        mData.add(new Object());
-        mData.add(new Object());
-        pullToRefreshListView.setAdapter(new MyOrderAdapter(listView, mData, R.layout.item_my_order));
-        return view;
-    }
 }
