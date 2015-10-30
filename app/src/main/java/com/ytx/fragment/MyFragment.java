@@ -17,7 +17,7 @@ import com.ytx.widget.TitleView;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 import org.kymjs.kjframe.widget.PagerSlidingTabStrip;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class MyFragment extends KJFragment implements ViewPager.OnPageChangeListener {
+public class MyFragment extends SupportFragment implements ViewPager.OnPageChangeListener {
 
     private HomeActivity activity;
     @BindView(id = R.id.my_title)
@@ -35,7 +35,7 @@ public class MyFragment extends KJFragment implements ViewPager.OnPageChangeList
     @BindView(id = R.id.pager)
     private ViewPager pager;
     private MyPagerAdapter adapter;
-    private ArrayList<View> mListViews;
+    private ArrayList<SupportFragment> mListViews;
 
     @Override
     protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -48,12 +48,12 @@ public class MyFragment extends KJFragment implements ViewPager.OnPageChangeList
         super.initData();
         my_title.setTitleText(getString(R.string.bottombar_content5));
         mListViews = new ArrayList<>();
-        mListViews.add(getInflateView());
-        mListViews.add(getInflateView());
-        mListViews.add(getInflateView());
-        mListViews.add(getInflateView());
-        mListViews.add(getInflateView());
-        adapter = new MyPagerAdapter(mListViews);
+        mListViews.add(new EmptyFragment());
+        mListViews.add(new EmptyFragment());
+        mListViews.add(new EmptyFragment());
+        mListViews.add(new EmptyFragment());
+        mListViews.add(new EmptyFragment());
+        adapter = new MyPagerAdapter(getFragmentManager(), mListViews);
     }
 
     @Override

@@ -1,32 +1,24 @@
 package com.ytx.adapter;
 
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+
+import org.kymjs.kjframe.ui.SupportFragment;
 
 import java.util.ArrayList;
 
 /**
  * Created by Augustus on 15/10/29.
  */
-public class MyPagerAdapter extends PagerAdapter {
+public class MyPagerAdapter extends FragmentPagerAdapter {
 
     private final String[] TITLES = { "全部", "待付款", "待发货", "待收货", "待评价"};
-    private ArrayList<View> mListViews;
+    private ArrayList<SupportFragment> mListViews;
 
-    public MyPagerAdapter(ArrayList<View> mListViews) {
+    public MyPagerAdapter(FragmentManager fm, ArrayList<SupportFragment> mListViews) {
+        super(fm);
         this.mListViews = mListViews;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView(mListViews.get(position));//删除页卡
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(mListViews.get(position), 0);//添加页卡
-        return mListViews.get(position);
     }
 
     @Override
@@ -40,7 +32,7 @@ public class MyPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+    public Fragment getItem(int position) {
+        return mListViews.get(position);
     }
 }

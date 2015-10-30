@@ -14,14 +14,14 @@ import com.ytx.widget.TitleView;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 import java.util.ArrayList;
 
 /**
  * Created by xiezuoyuan on 15/10/27.
  */
-public class LogisticsFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
+public class LogisticsFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>{
 
     private SecondActivity activity;
     @BindView(id = R.id.list)
@@ -32,7 +32,7 @@ public class LogisticsFragment extends KJFragment implements PullToRefreshBase.O
     private TitleView fragment_title;
 
     @Override
-    protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
+    protected View inflaterView(LayoutInflater inflater, ViewGroup conØtainer, Bundle bundle) {
         activity = (SecondActivity) getActivity();
         return View.inflate(getActivity(), R.layout.fragment_main, null);
     }

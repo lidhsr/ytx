@@ -19,6 +19,7 @@ import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 import org.kymjs.kjframe.widget.AdapterHolder;
 import org.kymjs.kjframe.widget.KJAdapter;
 
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 /**
  * Created by Augustus on 15/10/18.
  */
-public class CouponsFragment extends KJFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
+public class CouponsFragment extends SupportFragment implements PullToRefreshBase.OnRefreshListener<ListView>, Serializable {
 
     private SecondActivity activity;
     @BindView(id = R.id.list)

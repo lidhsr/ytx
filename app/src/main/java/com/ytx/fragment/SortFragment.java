@@ -14,12 +14,12 @@ import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshBase.OnRefreshListener;
 import org.kymjs.kjframe.pulltorefresh.PullToRefreshListView;
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
  * Created by Augustus on 15/10/18.
  */
-public class SortFragment extends KJFragment implements OnRefreshListener<ListView>{
+public class SortFragment extends SupportFragment implements OnRefreshListener<ListView>{
 
     private HomeActivity activity;
     @BindView(id = R.id.list)

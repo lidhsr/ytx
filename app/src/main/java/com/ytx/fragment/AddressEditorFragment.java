@@ -10,12 +10,12 @@ import com.ytx.activity.SecondActivity;
 import com.ytx.widget.TitleView;
 
 import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
  * Created by Augustus on 15/10/18.
  */
-public class AddressEditorFragment extends KJFragment {
+public class AddressEditorFragment extends SupportFragment {
 
     private SecondActivity activity;
     private int add;

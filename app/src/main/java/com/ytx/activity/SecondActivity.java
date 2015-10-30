@@ -19,7 +19,7 @@ import org.kymjs.kjframe.ui.SupportFragment;
 public class SecondActivity extends KJActivity {
 
     private int fragmentTyep;
-    private KJFragment fragment;
+    private SupportFragment fragment;
 
     @Override
     public void setRootView() {
@@ -46,14 +46,19 @@ public class SecondActivity extends KJActivity {
     @Override
     public void initWidget() {
         super.initWidget();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         changeFragment(fragment);
     }
 
-    public void changeFragment(KJFragment targetFragment) {
+    public void changeFragment(SupportFragment targetFragment) {
         super.changeFragment(R.id.second_content, targetFragment);
     }
 
-    public void changeFragment(KJFragment targetFragment, boolean isBack) {
+    public void changeFragment(SupportFragment targetFragment, boolean isBack) {
         super.changeFragment(R.id.second_content, targetFragment, isBack);
     }
 

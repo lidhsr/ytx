@@ -17,6 +17,7 @@ import org.kymjs.kjframe.tools.ToastUtils;
 import org.kymjs.kjframe.ui.BindView;
 import org.kymjs.kjframe.ui.KJActivityStack;
 import org.kymjs.kjframe.ui.KJFragment;
+import org.kymjs.kjframe.ui.SupportFragment;
 
 /**
  * Created by Augustus on 15/10/17.
@@ -37,12 +38,12 @@ public class HomeActivity extends KJActivity {
     private RadioButton mRbtnContent5;
 
 
-    public KJFragment contentFragment1;
-    private KJFragment contentFragment2;
-    private KJFragment contentFragment3;
-    private KJFragment contentFragment4;
-    private KJFragment contentFragment5;
-    private KJFragment currentFragment;
+    public SupportFragment contentFragment1;
+    private SupportFragment contentFragment2;
+    private SupportFragment contentFragment3;
+    private SupportFragment contentFragment4;
+    private SupportFragment contentFragment5;
+    private SupportFragment currentFragment;
 
     private boolean isOnKeyBacking;
     public static int height;
@@ -62,10 +63,16 @@ public class HomeActivity extends KJActivity {
         contentFragment5 = new MyFragment();
     }
 
+//    @Override
+//    public void initWidget() {
+//        super.initWidget();
+//        changeFragment(contentFragment1);
+//    }
+
     @Override
-    public void initWidget() {
-        super.initWidget();
-        changeFragment(contentFragment1);
+    protected void onStart() {
+        super.onStart();
+        changeFragment(null == currentFragment ? contentFragment1 : currentFragment);
     }
 
     @Override
@@ -91,7 +98,7 @@ public class HomeActivity extends KJActivity {
         }
     }
 
-    public void changeFragment(KJFragment targetFragment) {
+    public void changeFragment(SupportFragment targetFragment) {
         if(null != currentFragment && currentFragment.equals(targetFragment)) {
             return;
         }
@@ -100,7 +107,7 @@ public class HomeActivity extends KJActivity {
         super.changeFragment(R.id.main_content, targetFragment, false);
     }
 
-    private void changeBottomChecked(KJFragment targetFragment) {
+    private void changeBottomChecked(SupportFragment targetFragment) {
         if(targetFragment instanceof MainFragment) {
             mRbtnContent1.setChecked(true);
         } else if(targetFragment instanceof SortFragment) {
